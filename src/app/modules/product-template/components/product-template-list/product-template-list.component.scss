@@ -1,0 +1,13 @@
+// :host ::ng-deep .ngx-datatable .datatable-body .datatable-scroll {
+//     display: inherit;
+//   }
+
+
+@media screen and (min-width: 800px) {
+    .desktop-hidden {
+      display: none;
+    }
+    .mobile-hidden {
+      display: initial;
+    }
+  }

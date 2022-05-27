@@ -1,0 +1,86 @@
+<h4 mat-dialog-title
+  class="fs-2xl">{{title}}</h4>
+<form [formGroup]='form'>
+  <div mat-dialog-content>
+    <div fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutGap="8px">
+      <div>
+        <mat-form-field appearance="fill"
+          validationMessageContainer>
+          <mat-label>{{'NAME'|translate}}</mat-label>
+          <input matInput
+            placeholder="{{'NAME'|translate}}"
+            formControlName='name'
+            required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill"
+          validationMessageContainer>
+          <mat-label>{{'CODE'|translate}}</mat-label>
+          <input matInput
+            placeholder="{{'CODE'|translate}}"
+            formControlName='code'
+            required
+            class="always-ltr">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout='row'
+      fxLayoutAlign='space-between center'
+      ngClass.xs="pt8 pb12">
+      <p mat-dialog-subtitle
+        class="white">{{'LIMITATIONS'|translate}}</p>
+      <button mat-mini-fab
+        color='primary'
+        (click)='addLimitation()'
+        [disabled]="form.invalid">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div *ngFor='let limitation of fileLimitations(); let i = index'>
+      <ng-container [formGroup]="limitation">
+        <div fxLayout="row"
+          fxLayoutGap="8px"
+          fxLayoutAlign="center center">
+          <div fxFlex.xs="40%">
+            <mat-form-field appearance="fill"
+              validationMessageContainer>
+              <mat-label>{{'EXTENSION'|translate}}</mat-label>
+              <input matInput
+                placeholder="{{'EXTENSION'|translate}}"
+                formControlName='extension'
+                required
+                class="always-ltr">
+            </mat-form-field>
+          </div>
+          <div fxFlex.xs="40%">
+            <mat-form-field appearance="fill"
+              validationMessageContainer>
+              <mat-label>{{'MAXIMUM_SIZE'|translate}}</mat-label>
+              <input matInput
+                type="number"
+                placeholder="{{'MAXIMUM_SIZE'|translate}}"
+                formControlName='maxSizeInByte'
+                required
+                class="always-ltr">
+            </mat-form-field>
+          </div>
+          <button mat-mini-fab
+            class="mt16"
+            color='warn'
+            (click)='removeLimitation(i)'
+            [disabled]="fileLimitations().length == 1">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <era-add-footer [form]='form'
+    (onCancel)="closeDialog()"
+    (onSave)="save()"></era-add-footer>
+</form>

@@ -1,0 +1,105 @@
+@import 'settings/settings.scss';
+
+$card-width: 200px;
+
+:host {
+    display: block;
+}
+
+.card {
+    width: $card-width;
+
+    &_image--big {
+        box-shadow: 0px 23px 20px -22px rgb(100 100 111 / 15%);
+    }
+
+    $image-dimension: 34px;
+
+    &_image--small {
+        width: $image-dimension;
+        height: $image-dimension;
+        border: 1px solid #BAA895;
+        margin-top: -#{$image-dimension/2};
+    }
+
+    &_title {
+        &_off {
+            height: 38px;
+            min-width: 20px;
+            line-height: 38px;
+
+            .ear {
+                width: 19px;
+                height: 10px;
+                position: absolute;
+                top: 0px;
+                right: -8px;
+                line-height: 0;
+
+                &::after {
+                    content: "";
+                    background-color: white;
+                    width: 17px;
+                    height: 17px;
+                    display: inline-block;
+                    border-radius: 40%;
+                    margin-right: -9px;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        &_text {
+            font-size: 14px;
+        }
+    }
+
+    &_store {
+        margin: 10px 16px 15px;
+        font-size: 12px;
+        border-radius: 15px;
+        padding: 5px 12px;
+        box-shadow: 0px 2px 6px #D6D8DB;
+        border-radius: 15px;
+        display: inline-block;
+
+        >mat-icon {
+            height: 18px;
+            width: 18px;
+            font-size: 18px;
+        }
+    }
+}
+
+.card--loading {
+    width: $card-width;
+    background-color: $background-second;
+    position: relative;
+    padding: 5px;
+    border-radius: 25px;
+
+    &_image {
+        height: 162px;
+    }
+
+    &_title {
+        height: 35px;
+        margin: 33px 20px 0;
+    }
+
+    &_price {
+        height: 19px;
+        margin: 20px 20px 0;
+    }
+
+    &_store {
+        height: 26px;
+        margin: 10px 20px 20px;
+        width: 105px;
+    }
+
+
+    >div {
+        border-radius: 25px;
+    }
+}

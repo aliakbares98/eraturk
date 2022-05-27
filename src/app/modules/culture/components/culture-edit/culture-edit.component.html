@@ -1,0 +1,44 @@
+<h4 mat-dialog-title
+    class="fs-2xl">{{title}}</h4>
+<form [formGroup]="form">
+    <div mat-dialog-content
+        class="pb16">
+        <div fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutGap="8px">
+            <div>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'NAME'|translate}}</mat-label>
+                    <input matInput
+                        placeholder="{{'NAME'|translate}}"
+                        formControlName='name'
+                        required>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="fill"
+                    validationMessageContainer>
+                    <mat-label>{{'DIRECTION'|translate}}</mat-label>
+                    <mat-select matNativeControl
+                        required
+                        formControlName='rightToLeft'>
+                        <mat-option [value]="false">LTR</mat-option>
+                        <mat-option [value]="true">RTL</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="mt4">
+            <era-file-uploader #uploader
+                (onFilesSelected)="onFilesSelected($event)"
+                [config]='uploaderConfig'></era-file-uploader>
+        </div>
+    </div>
+
+    <era-add-footer [form]='form'
+        [loading]='loading'
+        (onCancel)="closeDialog()"
+        (onSave)="save()"></era-add-footer>
+</form>

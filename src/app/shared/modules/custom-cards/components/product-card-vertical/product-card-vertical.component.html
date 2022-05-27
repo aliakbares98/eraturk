@@ -1,0 +1,42 @@
+<div class="card contrary bg-white relative br-lg p4"
+    (click)="onCardClicked($event)"
+    *ngIf="!loading; else loadingCard">
+    <div class="card_image fadeIn card_image--big center py24 br-lg">
+        <img src="../../../../../../assets/images/custom-cards/img-product-card-vertical.png"
+            alt="">
+    </div>
+    <div class="card_image card_image--small fadeIn display-block br-round center mxa">
+        <img src="../../../../../../assets/images/custom-cards/peice-of-wood-brown.png"
+            class="p4 br-round width-100"
+            alt="">
+    </div>
+    <div class="card_title fadeIn pt16 px16"
+        fxLayout="row nowrap"
+        fxLayoutGap="8px">
+        <span class="card_title_off fadeIn center text-color-main bg-red px2 
+        br-lg fs-xs display-inline-block relative">
+            <span class="ear overflow-hidden bg-red display-inline-block right"></span>
+            4%
+        </span>
+        <span class="card_title_text fadeIn">{{supplierProduct?.product?.title}} Product Title
+        </span>
+    </div>
+    <div class="card_price mt16 pt20 px16 fadeIn">
+        <mat-icon class="middle mr4 mat-icon-sm">local_offer</mat-icon>
+        <span class="value">{{supplierProduct?.price}} 95.86 ₺</span>
+        <span class="value line-through ml8 op5">{{supplierProduct?.price}} 92 ₺</span>
+    </div>
+    <div class="card_store fadeIn">
+        <mat-icon>storefront</mat-icon>
+        {{supplierProduct?.supplier?.name}} Store Name
+    </div>
+</div>
+
+<ng-template #loadingCard>
+    <div class="card--loading">
+        <div class="shimmer-dark card--loading_image"></div>
+        <div class="shimmer-dark card--loading_title"></div>
+        <div class="shimmer-dark card--loading_price"></div>
+        <div class="shimmer-dark card--loading_store"></div>
+    </div>
+</ng-template>

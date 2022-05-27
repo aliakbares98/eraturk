@@ -1,0 +1,22 @@
+@import 'settings/settings.scss';
+
+textarea {
+    resize: vertical !important;
+}
+
+::ng-deep {
+    .sentence-part {
+        display: inline-block;
+        color: white;
+
+        .validation-message {
+            display: inline-block;
+        }
+    }
+
+}
+.product-custom-input{
+  background-color:$background-forth;
+  color: white;
+}
+

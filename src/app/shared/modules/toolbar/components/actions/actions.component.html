@@ -1,0 +1,12 @@
+<button class="edit" mat-icon-button
+    (click)='edit($event)'
+    color='primary'
+    *ngIf="!disableEdit && (updateAction | able)">
+    <mat-icon class="blue">edit</mat-icon>
+</button>
+<button class="delete" mat-icon-button
+    (click)='remove($event)'
+    color='warn'
+    *ngIf="!disableDelete && (deleteAction | able)">
+    <mat-icon class="red">delete</mat-icon>
+</button>

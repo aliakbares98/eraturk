@@ -1,0 +1,79 @@
+<div class="br-lg"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="30px"
+    fxLayoutGap.xs="30px">
+    <!-- Comment Form -->
+    <div fxFlex.gt-xs="0 0 400px">
+        <era-comment-form></era-comment-form>
+    </div>
+    <!-- Comments -->
+    <div fxFlex
+        fxLayout="column"
+        fxLayoutGap="20px"
+        fxLayoutGap.xs="30px">
+        <!-- Comment -->
+        <div class="bg-third br-lg"
+            ngClass.xs="p16"
+            ngClass.gt-xs="p28">
+            <ng-container *ngTemplateOutlet="comment"></ng-container>
+            <!-- Replies -->
+            <div class="bg-forth p16 br-lg mt16">
+                <ng-container *ngTemplateOutlet="comment"></ng-container>
+
+                <div class="bg-third p16 br-lg mt16">
+                    <ng-container *ngTemplateOutlet="comment"></ng-container>
+
+                    <div class="bg-forth p16 br-lg mt16">
+                        <ng-container *ngTemplateOutlet="comment"></ng-container>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-forth p16 br-lg mt16">
+                <ng-container *ngTemplateOutlet="comment"></ng-container>
+            </div>
+            <div class="bg-forth p16 br-lg mt16">
+                <ng-container *ngTemplateOutlet="comment"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #comment>
+    <div>
+        <h6 fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="16px">
+            <img src="../../../assets/images/user/user1.png"
+                width="50px"
+                height="50px">
+            <p>Rahman Ebrahimi</p>
+        </h6>
+        <div>
+            <p class="fs-sm fw-normal op6">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor
+                incididunt ut
+                labore et dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam
+                phasellus
+                vestibulum lorem sed risus. Turpis massa sed elementum tempus egestas sed.
+                Auctor urna
+                nunc
+                id cursus metus aliquam.
+            </p>
+            <!-- button_reply -->
+            <div class="pt24"
+                fxLayout="row"
+                fxLayoutAlign="space-between center">
+                <button class="btn bg-forth btn-md text-color-main">
+                    Reply
+                    <mat-icon>reply_all</mat-icon>
+                </button>
+                <div class="fs-xs">
+                    <mat-icon class="mat-icon-sm white">access_time</mat-icon>
+                    <span class="pl8">2021/01/01 - 22:30</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

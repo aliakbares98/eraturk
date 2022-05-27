@@ -1,0 +1,5 @@
+<div fxLayout="row" fxLayoutAlign='space-between center' class="pt20">
+    <button class="btn btn-green btn-lg" *ngIf="!disableSave" color='primary' (click)="save($event)" [disabled]="form?.invalid || form?.disabled || loading">Save</button>
+    <div fxFlex *ngIf="disableSave"></div>
+    <button class="btn btn-lg bg-white" (click)="cancel($event)" *ngIf="!disableCancel">Cancel</button>
+</div>

@@ -1,0 +1,72 @@
+@import 'settings/settings.scss';
+
+.my-drop-zone {
+    border: dotted 2px lightgray;
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-md;
+}
+
+.nv-file-over {
+    border: dotted 3px red;
+}
+
+:host {
+    width: 100%;
+    max-width: 300px;
+}
+
+table {
+    margin: 0;
+    width: 100%;
+}
+
+.uploader {
+    width: 100%;
+
+    &.disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
+}
+
+th {
+    text-align: left;
+}
+
+// File Uploader
+.custom-file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    &+label {
+        font-size: 1em;
+        font-weight: 700;
+        background-color: white;
+        display: inline-block;
+        cursor: pointer;
+        width: 100%;
+        display: block;
+        text-align: center;
+        border: $border;
+        border-radius: 4px;
+        color: #444;
+        padding: 8px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+
+        p {
+            margin: 0;
+        }
+    }
+}

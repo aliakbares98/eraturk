@@ -1,0 +1,343 @@
+<div class="bg-second br-lg"
+  ngClass.gt-xs="p32"
+  ngClass.xs="p16">
+  <h4>{{title}}</h4>
+  <form [formGroup]="form">
+    <div fxLayout="row wrap"
+      fxLayoutAlign="space-between"
+      fxLayoutGap='8px'
+      fxLayoutGap.xs="0">
+      <div fxFlex
+        fxLayout="column"
+        fxLayoutGap='4px'>
+        <mat-form-field appearance='fill'
+          validationMessageContainer>
+          <mat-label>{{'TITLE'|translate}}</mat-label>
+          <input matInput
+            placeholder="{{'TITLE'|translate}}"
+            formControlName='title'
+            required>
+        </mat-form-field>
+        <mat-form-field appearance='fill'
+          validationMessageContainer>
+          <mat-label>{{'CODE'|translate}}</mat-label>
+          <input matInput
+            placeholder="{{'CODE'|translate}}"
+            formControlName='code'
+            required>
+        </mat-form-field>
+
+        <button class="select-category-button bg-forth br-lg text-color-main"
+          type="button"
+          (click)="openCategoriesDialog()">
+          {{selectedCategory?.title ? selectedCategory.title : 'Select Template Category *'}}
+        </button>
+        <mat-checkbox class="checkbox mt16 green"
+          formControlName="isService"> {{'IS_SERVICE'|translate}}
+        </mat-checkbox>
+      </div>
+
+      <div fxFlex
+        fxLayout="column">
+        <mat-form-field appearance='fill'
+          validationMessageContainer>
+          <mat-label>{{'DESCRIPTOIN'|translate}}</mat-label>
+          <textarea matInput
+            rows="4"
+            placeholder="{{'DESCRIPTOIN'|translate}}"
+            formControlName='description'></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Add Feature Category -->
+    <h6 class="mb12 pt12">
+      {{'PROFILE.PRODUCT_TEMPLATE.PRODUCT_TEMPLATE_ADD'|translate}}
+    </h6>
+
+    <div [formGroupName]="'featureCategoryForm'">
+      <div fxLayout="row wrap"
+        fxLayoutAlign="start center"
+        fxLayoutGap="8px"
+        fxLayout.xs="row"
+        fxLayoutAlign.xs="start center">
+
+        <div fxFlex.gt-xs
+          fxFlex.xs="50">
+          <mat-form-field appearance='fill'
+            validationMessageContainer>
+            <mat-label>{{'TITLE'|translate}}</mat-label>
+            <input matInput
+              placeholder="{{'TITLE'|translate}}"
+              formControlName='title'>
+          </mat-form-field>
+        </div>
+        <div fxFlex.gt-xs="40"
+          fxFlex.xs="0 0 80px">
+          <mat-form-field appearance='fill'
+            validationMessageContainer>
+            <mat-label>{{'CODE'|translate}}</mat-label>
+            <input matInput
+              placeholder="{{'CODE'|translate}}"
+              formControlName='code'
+              class="always-ltr">
+          </mat-form-field>
+        </div>
+        <button class="btn btn-lg btn-green"
+          fxFlex.xs
+          [disabled]="enableFeatureCategoryButton()"
+          (click)="pushFeatureCategory()">Add</button>
+      </div>
+    </div>
+
+    <!-- Feature Categories -->
+    <div class="mt16"
+      *ngIf="featureCategoryForms.length">
+      <h6 class="mb12"
+        ngClass.xs="pt12">
+        {{'PROFILE.PRODUCT_TEMPLATE.FEATURE_DEFINITIONS_DEFINITIONS'|translate}}
+      </h6>
+
+      <mat-accordion multi
+        class="feature-categories-list">
+        <mat-expansion-panel [expanded]="true"
+          *ngFor="let featureCategory of featureCategoryForms; let i = index"
+          class="bg-third">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="bold text-color-main">
+              {{featureCategory.controls.title.value}}
+            </mat-panel-title>
+            <mat-panel-description fxFlex
+              fxLayoutAlign="end center"
+              class="bg-third text-color-main">
+              features ({{featureDefinitionLengthByCategory(featureCategory)}})
+              <button class="custom-fab custom-fab-mini custom-fab-red ml8"
+                fxFlex="0 0 30px"
+                type="button"
+                *ngIf="featureDefinitionLengthByCategory(featureCategory) === 0"
+                (click)="removeFeatureCategory(i)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <button class="custom-fab custom-fab-mini custom-fab-blue ml8"
+                fxFlex="0 0 30px"
+                type="button"
+                (click)="addFeatureDefinition($event, featureCategory)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <!-- Feature Definitions -->
+          <ng-container formArrayName="featureDefinitions"
+            *ngFor="let featureDefinition of featureDefinitionsByCategory(featureCategory); let i = index">
+            <mat-expansion-panel [expanded]="true"
+              class="bg-second">
+              <mat-expansion-panel-header class="text-color-main">
+                <mat-panel-title class="bold text-color-main">
+                  {{featureDefinition.controls.title.value ?
+                  featureDefinition.controls.title.value :
+                  'Feature Title'}}
+                </mat-panel-title>
+                <mat-panel-description fxFlex
+                  fxLayoutAlign="end center"
+                  class="text-color-main">
+                  {{featureDefinition.controls.featureType.value ?
+                  featureDefinition.controls.featureType.value : 'FeatureType'}}&nbsp;&nbsp;&nbsp;
+                  {{featureDefinition.controls.isOptional.value ? 'Optioal' : 'Required'}}
+                  <button color="warn"
+                    class="custom-fab custom-fab-mini custom-fab-red ml8"
+                    fxFlex="0 0 30px"
+                    color='warn'
+                    (click)='removeFeatureDefinition(getFeatureDefinitionFormId(featureDefinition))'>
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div [formGroupName]="getFeatureDefinitionFormId(featureDefinition)">
+                <div fxLayout="row wrap"
+                  fxLayoutAlign="space-between"
+                  fxLayoutGap="8px">
+                  <div fxFlex
+                    fxLayout="column"
+                    fxLayoutGap="4px">
+                    <mat-form-field appearance='fill'
+                      validationMessageContainer>
+                      <mat-label>{{'TITLE'|translate}}</mat-label>
+                      <input matInput
+                        placeholder="{{'TITLE'|translate}}"
+                        formControlName='title'
+                        required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance='fill'
+                      validationMessageContainer>
+                      <mat-label>{{'CODE'|translate}}</mat-label>
+                      <input matInput
+                        placeholder="{{'CODE'|translate}}"
+                        formControlName='code'
+                        required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill"
+                      validationMessageContainer
+                      fxFlex>
+                      <mat-label>{{"PROFILE.PRODUCT_TEMPLATE.FEATURE_TYPE"|translate}}</mat-label>
+                      <mat-select formControlName='featureType'
+                        (selectionChange)="onChangeFeatureType($event.value, getFeatureDefinitionFormId(featureDefinition))">
+                        <mat-option *ngFor="let featureType of featureTypesList"
+                          [value]="featureType">
+                          {{featureType}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex
+                    fxLayout="column">
+                    <mat-form-field appearance='fill'
+                      validationMessageContainer>
+                      <mat-label>{{'DESCRIPTOIN'|translate}}</mat-label>
+                      <textarea matInput
+                        rows="4"
+                        placeholder="{{'DESCRIPTOIN'|translate}}"
+                        formControlName='description'>
+                                            </textarea>
+                    </mat-form-field>
+                    <mat-checkbox class="checkbox mt16 green"
+                      formControlName="isOptional">{{'IS_OPTIONAL'|translate}}
+                    </mat-checkbox>
+                  </div>
+                  <div fxFlex="100"></div>
+
+                  <!-- Add Feature Constraint -->
+                  <div fxFlex="50"
+                    fxLayout='row'
+                    fxLayoutAlign='space-between center'>
+                    <p class="text-color-main"
+                      mat-dialog-subtitle>{{'CONSTRAINTS'|translate}}</p>
+                    <button class="btn btn-lg btn-green"
+                      ngClass.xs="ml94"
+                      (click)='addConstraint(featureDefinition)'
+                      [disabled]="constraintButtonShoudBeDisabled(featureDefinition)">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+                  <div fxFlex="100"></div>
+                  <!-- Feature Constraint -->
+                  <div fxFlex="50"
+                    fxLayout="column">
+                    <ng-container formArrayName='constraints'
+                      *ngFor='let constraint of featureConstraints(featureDefinition); let i = index'>
+
+                      <div [formGroupName]="i">
+                        <mat-form-field appearance='fill'
+                          validationMessageContainer>
+                          <mat-label>{{'DESCRIPTOIN'|translate}}</mat-label>
+                          <input matInput
+                            placeholder="{{'DESCRIPTOIN'|translate}}"
+                            formControlName='description'>
+                        </mat-form-field>
+                        <mat-checkbox class="checkbox mt16 green"
+                          formControlName="allowCustomOption">{{'CUSTOM_OPTION_IS_ALLOWED'|translate}}
+                        </mat-checkbox>
+                        <!-- Add Constraint Value -->
+                        <div fxLayout='row'
+                          fxLayoutAlign='space-between center'>
+                          <p class="text-color-main"
+                            mat-dialog-subtitle>{{'CONSTRAINT_VALUES'|translate}}</p>
+                          <button mat-mini-fab
+                            color='primary'
+                            (click)='addConstraintValue(constraint)'>
+                            <mat-icon>add</mat-icon>
+                          </button>
+                        </div>
+                        <!-- Constraint Values -->
+                        <ng-container formArrayName='value'
+                          *ngFor='let value of constraintValues(constraint); let i = index'>
+
+                          <!-- ValidOptions Constraint -->
+                          <div [formGroupName]="i"
+                            *ngIf="constraint.controls.type.value === featureConstraintTypes.validOptions"
+                            fxLayout="row nowrap"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="4px">
+
+                            <div fxFlex>
+                              <era-input-types [config]="prepareInputConfig(value, featureDefinition)"
+                                [style]="'material'">
+                              </era-input-types>
+                            </div>
+                            <button mat-mini-fab
+                              color='warn'
+                              (click)='removeConstraintValue(constraint, i)'>
+                              <mat-icon>remove</mat-icon>
+                            </button>
+                          </div>
+
+                          <!-- ValidRanges Constraints -->
+                          <div [formGroupName]="i"
+                            *ngIf="constraint.controls.type.value === featureConstraintTypes.validRanges"
+                            fxLayout="row nowrap"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="4px">
+                            <div fxFlex>
+                              <mat-form-field appearance='fill'
+                                validationMessageContainer>
+                                <mat-label>{{'FROM'|translate}}</mat-label>
+                                <input matInput
+                                  type="number"
+                                  placeholder="{{'FROM'|translate}}"
+                                  formControlName='from'
+                                  required>
+                              </mat-form-field>
+                            </div>
+                            <div fxFlex>
+                              <mat-form-field appearance='fill'
+                                validationMessageContainer>
+                                <mat-label>To</mat-label>
+                                <input matInput
+                                  type="number"
+                                  placeholder='To'
+                                  formControlName='to'
+                                  required>
+                              </mat-form-field>
+                            </div>
+                            <div fxFlex>
+                              <mat-form-field appearance='fill'
+                                validationMessageContainer>
+                                <mat-label>UOM</mat-label>
+                                <input matInput
+                                  type="text"
+                                  placeholder='UOM'
+                                  formControlName='uom'
+                                  required>
+                              </mat-form-field>
+                            </div>
+                            <button mat-mini-fab
+                              color='warn'
+                              (click)='removeConstraintValue(constraint, i)'>
+                              <!-- [disabled]="constraintButtonShoudBeDisabled(featureDefinition)" -->
+                              <mat-icon>remove</mat-icon>
+                            </button>
+                          </div>
+                        </ng-container>
+                        <br>
+                        <mat-divider></mat-divider>
+                        <br>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </ng-container>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <era-add-footer [form]='form'
+      [disableCancel]="true"
+      [loading]='loading'
+      (onSave)="save()">
+    </era-add-footer>
+  </form>
+</div>

@@ -1,0 +1,106 @@
+<div class="bg-second br-lg"
+  ngClass.gt-xs="p32"
+  ngClass.xs="p16">
+  <h4>{{title}}</h4>
+  <form [formGroup]="form"
+    fxLayout="column"
+    fxLayoutGap="8px">
+
+    <div fxLayout="row wrap"
+      fxLayoutAlign="space-between"
+      fxLayoutGap='8px'
+      fxLayout.xs="column">
+
+      <div fxFlex>
+        <mat-form-field appearance='fill'
+          validationMessageContainer>
+          <mat-label>Title</mat-label>
+          <input matInput
+            placeholder='Title'
+            formControlName='title'
+            required>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex>
+        <mat-form-field appearance='fill'
+          validationMessageContainer>
+          <mat-label>Code</mat-label>
+          <input matInput
+            placeholder='Code'
+            formControlName='code'
+            required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field appearance='fill'
+      validationMessageContainer>
+      <mat-label>Description</mat-label>
+      <textarea matInput
+        rows="6"
+        placeholder='Description'
+        formControlName='description'></textarea>
+    </mat-form-field>
+
+    <div class="template"
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutGap="16px"
+      fxLayoutAlign="start stretch">
+      <div fxFlex="0 0 264px"
+        fxLayoutAlign.xs="start none"
+        class="p24 bg-third br-lg overflow-hidden"
+        fxLayout="column">
+        <div class="items"
+          fxFlex
+          fxLayout="column"
+          fxLayoutGap="4px">
+          <div class="item selected bg-forth p8"
+            fxLayout="row"
+            fxLayoutGap="8px"
+            fxLayoutAlign="start center"
+            *ngIf="selectedTemplate">
+            <span fxFlex="0 0 30px"
+              class="checkbox checkbox--selected center">
+              <img src="../../../../../assets/images/decorator/tick-xs.png"
+                alt="">
+            </span>
+            <span class="title text-color-main"
+              fxFlex>{{selectedTemplate?.title}}</span>
+          </div>
+        </div>
+      </div>
+      <div fxFlex
+        fxLayout="column"
+        class="bg-third br-lg"
+        ngClass.gt-xs="p20"
+        ngClass.xs="p4">
+        <!-- Features -->
+        <div class="features p8">
+          <div formArrayName="features"
+            fxLayout="column"
+            fxLayoutGap="8px"
+            *ngFor="let category of selectedTemplate?.featureCategories">
+            <h4 class="mb16">
+              <mat-icon>apps</mat-icon>
+              {{category.title}} features
+            </h4>
+            <ng-container *ngFor="let feature of featuresOfCategory(category)"
+              [formGroupName]="getFeatureFormId(feature)">
+              <era-input-types [config]="prepareInputConfig(feature)">
+              </era-input-types>
+              <mat-divider></mat-divider>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <era-add-footer [form]='form'
+      [disableCancel]="true"
+      [loading]='loading'
+      (onSave)="save()">
+    </era-add-footer>
+  </form>
+</div>

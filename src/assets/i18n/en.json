@@ -1,0 +1,219 @@
+{
+    "ACTIONS": "Actions",
+    "ADD_NEW": "Add New",
+    "ADD_ROOT": "Add Root",
+    "ADD_THIS": "Add {{value}}",
+    "ADD": "Add",
+    "ADDRESS": "Address",
+    "ADMIN": "Admin",
+    "ALL": "All",
+    "AND": "and",
+    "BASE_INFO": "Base Info",
+    "BIRTH_DATE": "Birth Date",
+    "CATEGORY": "Category",
+    "CHANGE_PASSWORD": "Change Password",
+    "Choose_City": "Choose City",
+    "CITY": "City",
+    "CODE": "Code",
+    "COMPANY_TYPE": "Company Type",
+    "CONFIRM_NEW_PASSWORD": "Confirm new password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "CONTACTS": "Contacts",
+    "CONTINUE": "Continue",
+    "COUNTRY": "Country",
+    "CUSTOM_OPTION_IS_ALLOWED": "Custom option is allowed",
+    "CUSTOMER": "Customer",
+    "DESCRIPTOIN": "Description",
+    "DIRECTION": "Direction",
+    "EDIT_THIS": "Edit - {{value}}",
+    "EMAIL_CODE_ANNOUNCEMENT": "Entering this code is not required, but without it your email will not saved.",
+    "EMAIL_CODE": "Email Code",
+    "EMAIL": "Email",
+    "ENTER_CODE": "Enter Code",
+    "ENTER_PHONE_OR_EMAIL": "Enter phone or email",
+    "EXTENSION": "Extension",
+    "FILELIMITATIONS": "FileLimitaions",
+    "FILTERS": "Filters",
+    "FINISH_REGISTER": "Finish Register",
+    "FIRST_NAME": "First Name",
+    "FORGOT_PASSWORD": "Forgot password",
+    "FROM": "From",
+    "GENDER": "Gender",
+    "HOME_PAGE":"home page",
+    "INTERNATIONAL_FORMAT": "International Format",
+    "IS_OPTIONAL": "Is optional?",
+    "IS_SERVICE": "Is Service",
+    "LAST_NAME": "Last Name",
+    "LIMITATIONS": "Limitations",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "MAXIMUM_SIZE": "Maximum Size (Byte)",
+    "MESSAGE": "Message",
+    "NAME": "Name",
+    "NATIONALITY": "Nationality",
+    "NEW_PASSWORD": "New Password",
+    "NOT_AVAILABLE": "Not available",
+    "OPTIONAL": "Optional",
+    "OR": "or",
+    "PAGE_NOT_FOUND": "Page not found",
+    "PARENT": "Parent",
+    "PASSWORD": "Password",
+    "PHONE_CODE": "Phone Code",
+    "PHONE_NUMBER": "Phone Number",
+    "PHONE_OR_EMAIL": "Phone or email",
+    "PHONE": "Phone",
+    "PICK_ONE": "Pick one",
+    "Postal_Code": "Postal Code",
+    "Product_Categories":"Product Categories",
+    "PROVINCE": "Province",
+    "REGISTER_DATE": "Register Date",
+    "REGISTER_TYPE": "Register Type",
+    "REGISTER": "Register",
+    "Request_Comfirmation_Code": "Request Comfirmation Code",
+    "REQUEST_CONFIRMATION_CODE": "Request Confirmation Code",
+    "ROLE_BOTH": "Customer, Supplier",
+    "ROLE": "Role",
+    "ROOT": "Root",
+    "SAVE": "Save",
+    "SAVED_ITEM": "Saved Item",
+    "SEARCH_CONTACTS": "Search contacts",
+    "SECOND": "Second",
+    "SEND_CODE_AGAIN": "Send Code Again",
+    "SIGN_IN": "Sign In",
+    "Social_ID": "Social ID",
+    "Social_Media": "Social Media",
+    "SORT_BY": "Sort by",
+    "SUPPLIER": "Supplier",
+    "TEMPLATE": "Template",
+    "THE_CATEGORY_TITLE": "The category title",
+    "TITLE": "Title",
+    "TYPE": "Type",
+    "USERNAME": "Username",
+    "VALUE": "Value",
+    "WELCOME": "Welcome to EraTurk",
+    "MENU": {
+        "PERSONL_INFO": "Personal Info",
+        "SAVED_ITEMS": "Saved Items",
+        "MESSAGING": "Messaging",
+        "DOCUMENT_TYPE": "Document Type",
+        "CULTURE": "Culture",
+        "PRODUCT_CATEGORY": "Product Category",
+        "PRODUCT_TEMPLATE": "Product Template",
+        "PRODUCT": "Product",
+        "SUPPLIER_PRODUCT": "Supplier Product",
+        "INDIVIDUAL_PARTY": "Individual Party",
+        "ORGANIZATION_PARTY": "Organization Party",
+        "SYSTEM_SETTING": "System Setting"
+    },
+    "HEADER": {
+        "HOME": "Home",
+        "PRODUCTS": "Products",
+        "MEDIA": "Media",
+        "CONTACT_US": "Contact Us",
+        "ABOOUT_US": "About Us",
+        "FAQ": "FAQ",
+        "CONDITIONS": "Conditions"
+    },
+    "FOOTER": {
+        "COLUMN1": {
+            "ITEM1": "",
+            "ITEM2": "",
+            "ITEM3": "",
+            "ITEM4": "",
+            "ITEM5": ""
+        },
+        "COLUMN2": {
+            "ITEM1": "",
+            "ITEM2": "",
+            "ITEM3": "",
+            "ITEM4": "",
+            "ITEM5": ""
+        },
+        "COLUMN3": {
+            "ITEM1": "",
+            "ITEM2": "",
+            "ITEM3": "",
+            "ITEM4": "",
+            "ITEM5": ""
+        },
+        "COLUMN4": {
+            "ITEM1": "",
+            "ITEM2": "",
+            "ITEM3": "",
+            "ITEM4": "",
+            "ITEM5": ""
+        }
+    },
+    "PAGE": {
+        "HOME": {
+            "BANNER": {
+                "TITLE": "",
+                "TEXT": "",
+                "BUTTON": ""
+            },
+            "INTRO": {
+                "TEXT": "",
+                "BUTTON1": "Learn more about us",
+                "BUTTON2": "See our products"
+            }
+        },
+        "PRODUCT": {},
+        "MEDIA": {},
+        "CONTACDT_US": {
+            "FORM": {},
+            "Address": "Skyland Istanbul Block B Entrance Lobby entrance, 34415 Sariyer, Turkey."
+        },
+        "ABOUT_US": {
+            "SECTION1": {
+                "TITLE": "",
+                "TEXT": ""
+            },
+            "SECTION2": {
+                "TITLE": "",
+                "TEXT": ""
+            }
+        },
+        "FAQ": {
+            "TITLE": "",
+            "QUASTION1": "",
+            "ANSWER1": "",
+            "QUASTION2": "",
+            "ANSWER2": "",
+            "QUASTION3": "",
+            "ANSWER3": "",
+            "QUASTION4": "",
+            "ANSWER4": "",
+            "QUASTION5": "",
+            "ANSWER5": "",
+            "QUASTION6": "",
+            "ANSWER6": ""
+        },
+        "CONDITIONS": {
+            "SECTION1": {
+                "TITLE": "",
+                "TEXT": ""
+            },
+            "SECTION2": {
+                "TITLE": "",
+                "TEXT": ""
+            }
+        }
+    },
+    "PROFILE": {
+        "PERSONAL_INFO": "Personal Info",
+        "PERSONAL_INFO_EDIT": "Personal Info edit",
+        "PRODUCT_TEMPLATE": {
+            "SELECT_TEMPLATE_CATEGORY": "Select Template Category",
+            "FEATURE_CATEGORY": "Feature Categories",
+            "TOMROK": "Tomrok",
+            "FEATURE_DEFINITIONS_DEFINITIONS": "Feature Categories/Definitions",
+            "FEATURE_TYPE": "Feature Type",
+            "CONSTRAINTS": "Constraints",
+            "CONSTRAINT_VALUES": "Constraint Values",
+            "PRODUCT_TEMPLATE_ADD":"Product Template"
+        }
+    },
+    "NOT_FOUND_TITLE":"The page you're looking for does not seem to exist",
+    "NOT_AVAILABLE_TITLE":"The Item you were looking for is not available anymore!",
+    "PRODUCT_TEMPLATE_ADD_TITLE":"Select procuct template category"
+}

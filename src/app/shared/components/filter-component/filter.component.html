@@ -1,0 +1,73 @@
+<h4 mat-dialog-title class="fs-2xl">Filter</h4>
+
+<form [formGroup]="form"
+    fxLayout="column wrap">
+    <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <mat-label>operator</mat-label>
+        <mat-select matNativeControl
+            formControlName='operator1'>
+            <mat-option [value]="filterOperation.contains">contains</mat-option>
+            <mat-option [value]="filterOperation.equal">equals</mat-option>
+            <mat-option [value]="filterOperation.notEqual">notEqual</mat-option>
+            <mat-option [value]="filterOperation.startWith">startWith</mat-option>
+            <mat-option [value]="filterOperation.endWith">endWith</mat-option>
+            <mat-option [value]="filterOperation.greaterThan">greaterThan</mat-option>
+            <mat-option [value]="filterOperation.greaterThanEqual">greaterThanEqual</mat-option>
+            <mat-option [value]="filterOperation.lessThan">lessThan</mat-option>
+            <mat-option [value]="filterOperation.lessThanEqual">lessThanEqual</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <input matInput
+            placeholder='value'
+            formControlName='value1'>
+    </mat-form-field>
+    <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <mat-label>logic</mat-label>
+        <mat-select matNativeControl
+            formControlName='logic'>
+            <mat-option value="and">AND</mat-option>
+            <mat-option value="or">OR</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <mat-label>operator</mat-label>
+        <mat-select matNativeControl
+            formControlName='operator2'>
+            <mat-option [value]="filterOperation.contains">contains</mat-option>
+            <mat-option [value]="filterOperation.equal">equals</mat-option>
+            <mat-option [value]="filterOperation.notEqual">notEqual</mat-option>
+            <mat-option [value]="filterOperation.startWith">startWith</mat-option>
+            <mat-option [value]="filterOperation.endWith">endWith</mat-option>
+            <mat-option [value]="filterOperation.greaterThan">greaterThan</mat-option>
+            <mat-option [value]="filterOperation.greaterThanEqual">greaterThanEqual</mat-option>
+            <mat-option [value]="filterOperation.lessThan">lessThan</mat-option>
+            <mat-option [value]="filterOperation.lessThanEqual">lessThanEqual</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <input matInput
+            placeholder='value'
+            formControlName='value2'>
+    </mat-form-field>
+
+    <div fxLayout="row"
+        fxLayoutAlign='space-between center'
+        fxLayoutGap="8px"
+        class="pt16">
+        <button mat-flat-button
+            color='primary'
+            (click)="save()">Save</button>
+        <div fxFlex></div>
+        <button mat-stroked-button
+            color="primary"
+            (click)="resetFilters()">Reset</button>
+        <button mat-stroked-button
+            (click)="closeDialog()">Cancel</button>
+    </div>
+</form>

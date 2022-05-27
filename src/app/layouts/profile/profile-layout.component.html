@@ -1,0 +1,38 @@
+<div class="layout layout--profile"
+    ngClass.gt-xs="pt16 pb16 pl16"
+    [class.is-mobile]="mobileQuery.matches"
+    fxLayout="column">
+
+    <mat-toolbar fxHide.gt-xs
+        class="bg-forth">
+        <button mat-icon-button
+            class="mr4"
+            routerLink="/">
+            <mat-icon>home</mat-icon>
+        </button>
+        <div fxFlex></div>
+        <button mat-icon-button
+            class="mr4"
+            (click)="snav.toggle()">
+            <mat-icon>{{snav.opened ? 'close' : 'menu'}}</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container"
+        fxFlex
+        [style.marginTop.px]="mobileQuery.matches ? 16 : 0">
+        <mat-sidenav #snav
+            [opened]="!mobileQuery.matches"
+            [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56"
+            fxFlex="0 0 350px">
+            <era-side-menu (clickOnItem)="onClickedSideMenuItem()"></era-side-menu>
+        </mat-sidenav>
+
+        <mat-sidenav-content fxFlex
+            class="pl16 pr16">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -1,0 +1,40 @@
+@import "settings/settings.scss";
+
+.menu {
+  $user-image-width: 60px;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+
+  .user-image {
+    width: $user-image-width;
+    height: $user-image-width;
+
+    >img {
+      width: 100%;
+    }
+
+    $edit-icon-width: 24px;
+
+    &_icon--edit {
+      width: $edit-icon-width;
+      height: $edit-icon-width;
+      line-height: $edit-icon-width;
+      position: absolute;
+      bottom: -($edit-icon-width / 2);
+      right: calc((#{$user-image-width} - #{$edit-icon-width}) / 2);
+      transition: $transition;
+      color: $text-color-contrary;
+    }
+
+    &:hover {
+      .user-image_icon--edit {
+        color: $green;
+      }
+    }
+  }
+}
+
+.space {
+  min-height: 40px;
+}

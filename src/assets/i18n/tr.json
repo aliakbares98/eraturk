@@ -1,0 +1,214 @@
+{
+    "ACTIONS": "faaliyetler ",
+    "ADD_NEW": "Yeni Ekle",
+    "ADD_ROOT": "Kök Ekle",
+    "ADD_THIS": "Ekle - {{value}}",
+    "ADD": "Ekle",
+    "ADDRESS": "adres",
+    "ADMIN": "Yönetim",
+    "ALL": "hepsi",
+    "AND": "ve",
+    "BASE_INFO": "temel bilgi",
+    "BIRTH_DATE": "doğum tarihi",
+    "CATEGORY": "kategori",
+    "CHANGE_PASSWORD": "Şifre değiştir",
+    "Choose_City":"şehir seç",
+    "CITY":"şehir",
+    "CODE": "Kod",
+    "COMPANY_TYPE": "şirket türü",
+    "CONFIRM_NEW_PASSWORD": "Yeni şifreyi onayla",
+    "CONFIRM_PASSWORD": "Şifreyi Onayla",
+    "CONTACTS": "kişiler",
+    "CONTINUE": "Devam et",
+    "COUNTRY": "ülke",
+    "CUSTOM_OPTION_IS_ALLOWED":"özel seçeneğe izin verilir",
+    "CUSTOMER": "Müşteri",
+    "DESCRIPTOIN": "tanım",
+    "DIRECTION": "yön",
+    "EDIT_THIS": "Düzenle - {{value}}",
+    "EMAIL_CODE_ANNOUNCEMENT": "Bu kodu girmek gerekli değildir, ancak bu olmadan e-postanız kaydedilmez.",
+    "EMAIL_CODE": "E-posta Kodu",
+    "EMAIL": "E-posta",
+    "ENTER_CODE": "Kodu girin",
+    "ENTER_PHONE_OR_EMAIL": "Telefon veya E-posta girin",
+    "EXTENSION": "genişletme",
+    "FILTERS":"filtreler",
+    "FINISH_REGISTER": "Kaydı Bitir",
+    "FIRST_NAME": "ön isim",
+    "FORGOT_PASSWORD": "Parolanızı mı unuttunuz",
+    "FROM":"bölge",
+    "GENDER":"cinsiyet",
+    "HOME": "Ana Sayfa",
+    "INTERNATIONAL_FORMAT": "Uluslararası Format",
+    "IS_OPTIONAL":"isteğe bağlı",
+    "IS_SERVICE": "hizmettir",
+    "LAST_NAME": "soyisim",
+    "LIMITATIONS": "kısıtlamalar",
+    "LOGIN": "Griş Yap",
+    "LOGOUT": "Çıkış Yap",
+    "MAXIMUM_SIZE": "en büyük boy",
+    "MESSAGE": "mesaj",
+    "MORE": "daha fazlası",
+    "NAME": "isim",
+    "NATIONALITY": "uyruk",
+    "NEW_PASSWORD": "Yeni Şifre",
+    "OPTIONAL": "İsteğe bağlı",
+    "OR": "veya",
+    "PASSWORD": "Şifre",
+    "PHONE_CODE": "Telefon Kodu",
+    "PHONE_NUMBER": "telefon numarası",
+    "PHONE_OR_EMAIL": "Telefon ya da E-posta",
+    "PHONE": "Telefon",
+    "PICK_ONE":"birini seç",
+    "Postal_Code":"posta kodu",
+    "PROVINCE": "bölge",
+    "Register_Date":"kayıt tarihi",
+    "REGISTER_TYPE": "kayıt türü",
+    "REGISTER": "Üye Ol",
+    "Request_Comfirmation_Code":"onay kodu talep et",
+    "REQUEST_CONFIRMATION_CODE":"onay kodu talep et",
+    "ROLE_BOTH": "Müşteri, Tedarikçi",
+    "ROLE": "Rol",
+    "ROOT": "Kök",
+    "SAVE": "Kayıt",
+    "SAVED_ITEM": "kayıtlı öge",
+    "SECOND": "Saniye",
+    "SEND_CODE_AGAIN": "Kodu tekrar yolla",
+    "SIGN_IN": "oturum aç",
+    "Social_ID":"sosyal kimlik",
+    "Social_Media":"sosyal medya",
+    "SORT_BY": "göre sırala",
+    "SUPPLIER": "Tedarikçi",
+    "TEMPLATE": "şablon",
+    "THE_CATEGORY_TITLE":"kategori başlığı",
+    "TITLE": "başlık",
+    "TYPE":"tür",
+    "USERNAME": "Kullanıcı adı",
+    "VALUE":"değer",
+    "WELCOME": "EraTürk'e hoş geldiniz",
+    "MENU": {
+        "PERSONL_INFO": "Kişisel Bilgi",
+        "MESSAGING": "Mesajlaşma",
+        "SAVED_ITEMS": "Kaydedilen Öğeler",
+        "DOCUMENT_TYPE": "Belge Türü",
+        "CULTURE": "Dil",
+        "PRODUCT_CATEGORY": "Ürün Kategorisi",
+        "PRODUCT_TEMPLATE": "Ürün Şablonu",
+        "PRODUCT": "Ürün",
+        "SUPPLIER_PRODUCT": "Tedarikçisi Ürün",
+        "INDIVIDUAL_PARTY": "Bireysel Parti",
+        "ORGANIZATION_PARTY": "Organizasyon Partisi"
+    },
+    "HEADER": {
+        "HOME": "Ana Sayfa",
+        "PRODUCTS": "Ürünler",
+        "MEDIA": "Medya",
+        "CONTACT_US": "İletişim",
+        "ABOOUT_US": "Hakkımızda",
+        "FAQ": "FAQ",
+        "CONDITIONS": "Koşullar"
+    },
+    "FOOTER": {
+        "COLUMN1": {
+            "TITLE": "Müşteri Hizmetleri",
+            "ITEM1": "Üye ol ve oturum aç",
+            "ITEM2": "Politikalar & Kurallar",
+            "ITEM3": "İletişim",
+            "ITEM4": "Hakkımızda",
+            "ITEM5": "Sıkça Sorulan Sorular"
+        },
+        "COLUMN2": {
+            "TITLE": "Kurumsal Hizmetler",
+            "ITEM1": "Ürünler ",
+            "ITEM2": "En özel teklifler ",
+            "ITEM3": "Galeri ",
+            "ITEM4": "En çok satan ürünler ",
+            "ITEM5": "En yeni ürünler"
+        },
+        "COLUMN3": {
+            "TITLE": "İletişim",
+            "ITEM1": "",
+            "ITEM2": "",
+            "ITEM3": "",
+            "ITEM4": "",
+            "ITEM5": ""
+        },
+        "COLUMN4": {
+            "TITLE": "Bülten",
+            "ITEM1": "3,040 üye",
+            "ITEM2": "Bültenimize üye olabilirsiniz.",
+            "ITEM3": "",
+            "ITEM4": "",
+            "ITEM5": ""
+        }
+    },
+    "PAGE": {
+        "HOME": {
+            "BANNER": {
+                "TITLE": "",
+                "TEXT": "",
+                "BUTTON": ""
+            },
+            "INTRO": {
+                "TEXT": "",
+                "BUTTON1": "",
+                "BUTTON2": ""
+            }
+        },
+        "PRODUCT": {},
+        "MEDIA": {},
+        "CONTACDT_US": {
+            "FORM": {},
+            "Address": "Skyland İstanbul B Blok Girişi Lobi girişi, 34415 Sarıyer, Turkey"
+        },
+        "ABOUT_US": {
+            "SECTION1": {
+                "TITLE": "",
+                "TEXT": ""
+            },
+            "SECTION2": {
+                "TITLE": "",
+                "TEXT": ""
+            }
+        },
+        "FAQ": {
+            "TITLE": "",
+            "QUASTION1": "",
+            "ANSWER1": "",
+            "QUASTION2": "",
+            "ANSWER2": "",
+            "QUASTION3": "",
+            "ANSWER3": "",
+            "QUASTION4": "",
+            "ANSWER4": "",
+            "QUASTION5": "",
+            "ANSWER5": "",
+            "QUASTION6": "",
+            "ANSWER6": ""
+        },
+        "CONDITIONS": {
+            "SECTION1": {
+                "TITLE": "",
+                "TEXT": ""
+            },
+            "SECTION2": {
+                "TITLE": "",
+                "TEXT": ""
+            }
+        }
+    },
+    "PROFILE": {
+        "PERSONAL_INFO": "",
+        "PRODUCT_TEMPLATE": {
+            "ADD": {
+                "SELECT_TEMPLATE_CATEGORY": "",
+                "FEATURE_CATEGORY": ""
+            },
+            "EDIT": {
+                "TOMROK": "",
+                "FEATURE_DEFINITIONS": ""
+            }
+        }
+    }
+  
+}

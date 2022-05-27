@@ -1,0 +1,88 @@
+    @import 'settings/settings.scss';
+
+    tree-viewport {
+        display: block;
+        min-height: 40px !important;
+        overflow: auto;
+    }
+
+    .toggle-children-wrapper {
+        padding: 0px 3px 0px 1px;
+    }
+
+    .node-wrapper {
+        align-items: center;
+    }
+
+    .toggle-children {
+        height: 24px;
+        width: 24px;
+    }
+
+    .toggle-children-wrapper-collapsed .toggle-children {
+        transform: rotate(0);
+        background-image: url('../../assets/images/tree/closed-folder.png');
+    }
+
+    .toggle-children-wrapper-expanded .toggle-children {
+        transform: rotate(0);
+        background-image: url('../../assets/images/tree/opened-folder.png');
+    }
+
+    .select-category-tree {
+
+        .node-content-wrapper-active,
+        .node-content-wrapper-focused,
+        .node-content-wrapper:hover {
+            box-shadow: none;
+            // background-color: transparent;
+        }
+    }
+
+    .node-content-wrapper:hover {
+        background: transparent;
+    }
+
+    .node-content-wrapper {
+        display: flex;
+        padding: 0;
+
+        tree-node-content {
+            span.ng-star-inserted {
+                display: inline-block;
+                height: 100%;
+                padding-left: 8px;
+                vertical-align: middle;
+                line-height: 40px;
+            }
+        }
+
+        &:hover {
+            background: transparent;
+            box-shadow: none !important;
+        }
+    }
+
+    .main-container[dir='rtl'] {
+        .node-content-wrapper {
+            tree-node-content {
+                span.ng-star-inserted {
+                    padding-right: 8px;
+                }
+            }
+        }
+    }
+
+    ::ng-deep .mat-select-content {
+        background-color: red;
+    }
+
+    .node-content-wrapper-active,
+    .node-content-wrapper.node-content-wrapper-active:hover,
+    .node-content-wrapper-active.node-content-wrapper-focused {
+        background: $background-third;
+    }
+
+    .node-content-wrapper-active {
+        background: transparent;
+    }

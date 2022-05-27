@@ -1,0 +1,47 @@
+<div>
+    <a>
+        <img class="logo-top"
+            width="58px"
+            height="57px"
+            src="../../../../../assets/images/logo/logo.png">
+    </a>
+    <button mat-flat-button
+        class="button-top br-lg fs-sm"
+        routerLink="/login">Login</button>
+
+    <div class="">
+        <swiper [slidesPerView]="1"
+            [spaceBetween]="0"
+            [pagination]="true"
+            [keyboard]="true">
+            <ng-template swiperSlide>
+                <div class="slide slide--1">
+                    <h3 class="slide_title">Welcome to ERATurk</h3>
+                    <p class="slide_subtitle">Lorem ipsum, or lipsum sometimes..</p>
+                </div>
+            </ng-template>
+            <ng-template swiperSlide>
+                <div class="slide slide--2">
+                    <h3>Brows suppliers for finding best price</h3>
+                    <p>Lorem ipsum, or lipsum sometimes..</p>
+                </div>
+            </ng-template>
+            <ng-template swiperSlide>
+                <div class="slide slide--3">
+                    <h3>Search nearby stores and types of woods</h3>
+                    <p>Lorem ipsum, or lipsum sometimes..</p>
+                </div>
+            </ng-template>
+            <ng-template swiperSlide>
+                <div class="slide slide--1">
+                    <h3>Choose between +2000 woods and order </h3>
+                    <p>Lorem ipsum, or lipsum sometimes..</p>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+
+    <button mat-stroked-button
+        class="button-signup br-sm"
+        routerLink='/register'>{{'REGISTER' | translate}}</button>
+</div>

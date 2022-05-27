@@ -1,0 +1,89 @@
+@import 'settings/settings.scss';
+
+// Colors
+.white {
+    color: white;
+}
+
+.red {
+    color: $red;
+}
+
+.blue {
+    color: $blue;
+}
+
+.green {
+    color: $green;
+}
+
+.dark-green {
+    color: $dark-green;
+}
+
+.orange {
+    color: $orange;
+}
+
+.grey {
+    color: $grey;
+}
+
+.dark-grey {
+    color: $dark-grey;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+// Text Colors
+.text-color {
+    &-main {
+        color: $text-color-main;
+    }
+
+    &-contrary {
+        color: $text-color-contrary;
+    }
+
+    &-green {
+        color: $text-color-green;
+    }
+}
+
+// Backgroud Colors
+.bg {
+
+    &-first {
+        background-color: $background-first !important;
+    }
+
+    &-second {
+        background-color: $background-second;
+    }
+
+    &-third {
+        background-color: $background-third;
+    }
+
+    &-forth {
+        background-color: $background-forth;
+    }
+
+    &-focused {
+        background-color: $background-focused;
+    }
+
+    &-white {
+        background-color: white;
+    }
+
+    &-green {
+        background-color: $green;
+    }
+
+    &-red {
+        background-color: $red;
+    }
+}

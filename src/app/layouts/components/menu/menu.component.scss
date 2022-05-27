@@ -1,0 +1,133 @@
+@import 'settings/settings.scss';
+
+$menu-height: $navbar-height - $notifications-height;
+
+.menu {
+    flex: 0 0 #{$menu-height};
+    padding-right: $header-padding;
+
+    &_item {
+        transition: $transition;
+
+        &.active-link {
+            color: $green;
+        }
+
+        .icon-image {
+            margin-right: 4px;
+        }
+
+        &:hover {
+            color: $green;
+        }
+
+        &--more {
+            height: $menu-height;
+            width: 70px;
+            margin-right: 100px;
+            z-index: 2;
+
+            &::before {
+                content: '';
+                width: 135px;
+                height: 120.24px;
+                position: absolute;
+                bottom: 0;
+                right: 35px;
+                background-image: url(../../../../assets/images/layout/menu-shape-left.png);
+                background-size: cover;
+                z-index: -1;
+            }
+
+            &::after {
+                content: url(../../../../assets/images/layout/menu-right.svg);
+                width: 115.62px;
+                height: 74.25px;
+                position: absolute;
+                bottom: 0;
+                left: 35px;
+                background-size: cover;
+                z-index: -1;
+            }
+        }
+    }
+
+    &_search {
+        height: 43px;
+        width: 70px;
+        border-top-right-radius: 34px;
+        border-bottom-right-radius: 34px;
+        position: absolute;
+        left: 68px;
+        transition: width .3s ease-in-out;
+        z-index: 10;
+
+        &::before {
+            content: '';
+            width: 36px;
+            height: 43px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-image: url(../../../../assets/images/layout/menu-search-shape-left.png);
+        }
+
+        &.isSearching {
+            width: 340px;
+
+            >input {
+                display: block;
+            }
+        }
+
+        >input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            text-indent: 35px;
+            display: none;
+
+            &::placeholder {
+                color: $text-color-main;
+            }
+        }
+    }
+
+    &--more {
+        height: $navbar-height - $notifications-height;
+        position: absolute;
+        left: 37px;
+        z-index: 10;
+        width: 65%;
+
+        &:before {
+            content: "";
+            width: 30px;
+            height: 69px;
+            background-color: white;
+            position: absolute;
+            left: -20px;
+            bottom: 10px;
+        }
+
+        &::after {
+            content: url(../../../../assets/images/layout/menu-right.svg);
+            width: 115.62px;
+            height: 74.25px;
+            position: absolute;
+            bottom: 0;
+            right: -111px;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .item.active-link {
+            color: $green;
+        }
+    }
+
+    .space {
+        flex-grow: 1;
+    }
+}

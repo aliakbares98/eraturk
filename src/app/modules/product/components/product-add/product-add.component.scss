@@ -1,0 +1,48 @@
+@import 'settings/settings.scss';
+
+.template {
+
+    &--certain-height {
+        height: 400px;
+    }
+
+    .items {
+        overflow: auto;
+
+        .item {
+            border-radius: 10px;
+
+            .checkbox {
+                width: 30px;
+                height: 30px;
+                background-color: #505654;
+                border-radius: 10px;
+
+                &--selected {
+                    background-color: #00A96A;
+                    line-height: 30px;
+                }
+            }
+
+            &.selected {
+                background-color: $green;
+            }
+
+            &:not(.selected) {
+                &:hover {
+                    .title {
+                        color: $green;
+                    }
+                }
+
+                .title {
+                    transition: color .3s ease-in-out;
+                }
+            }
+        }
+    }
+
+    .features {
+        overflow: auto;
+    }
+}

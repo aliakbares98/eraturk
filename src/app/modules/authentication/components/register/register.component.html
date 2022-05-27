@@ -1,0 +1,120 @@
+<div fxLayout='column'
+    fxLayoutAlign="start center"
+    ngClass.xs="py32 px32"
+    ngClass.gt-xs="py64">
+    <img width="161px"
+        height="57px"
+        class="pointer"
+        src="../../../../../assets/images/logo/logo-text-horizontal-white.png"
+        routerLink="/">
+
+    <div class="form-wrapper mt40 bg-white br-lg contrary"
+        ngClass.xs="px32 pt24 pb32"
+        ngClass.gt-xs="px36 py40">
+        <h3 class="px4 mb0">
+            {{'REGISTER' | translate}}
+        </h3>
+        <p class="mb16 px4">
+            Are you a member?
+            <a routerLink='/login'
+                class="link fw-bold green">Login</a>
+        </p>
+        <form [formGroup]="form"
+            fxLayout='row wrap'
+            fxLayoutGap.xs="0"
+            fxLayout.xs="column"
+            fxLayoutGap.xs="4px"
+            class="contrary">
+            <div fxFlex="50"
+                fxLayout="column"
+                fxLayoutGap="4px"
+                ngClass.gt-xs="pr4">
+                <mat-form-field validationMessageContainer
+                    appearance='fill'>
+                    <mat-label>{{'USERNAME' | translate}}</mat-label>
+                    <input matInput
+                        [placeholder]="'USERNAME' | translate"
+                        formControlName='userName'
+                        required
+                        class="always-ltr">
+                </mat-form-field>
+                <mat-form-field validationMessageContainer
+                    appearance='fill'>
+                    <mat-label>{{'PASSWORD' | translate}}</mat-label>
+                    <input type='password'
+                        matInput
+                        [placeholder]="'PASSWORD' | translate"
+                        formControlName='password'
+                        required
+                        class="always-ltr">
+                </mat-form-field>
+                <mat-form-field validationMessageContainer
+                    appearance='fill'>
+                    <mat-label>{{'CONFIRM_PASSWORD' | translate}}</mat-label>
+                    <input type='password'
+                        matInput
+                        [placeholder]="'CONFIRM_PASSWORD' | translate"
+                        formControlName='passwordConfirm'
+                        required
+                        class="always-ltr">
+                </mat-form-field>
+            </div>
+            <div fxFlex="50"
+                fxLayout="column"
+                fxLayoutGap="4px"
+                ngClass.gt-xs="pl4">
+                <mat-form-field validationMessageContainer
+                    class="input--cellphone">
+                    <ngx-mat-intl-tel-input [preferredCountries]="['tr']"
+                        [enablePlaceholder]="true"
+                        [enableSearch]="true"
+                        name="cellPhone"
+                        formControlName="cellPhone">
+                    </ngx-mat-intl-tel-input>
+                </mat-form-field>
+                
+                <mat-form-field validationMessageContainer
+                    appearance='fill'>
+                    <mat-label>{{'ROLE' | translate}}</mat-label>
+                    <mat-select matNativeControl
+                        required
+                        formControlName='role'>
+                        <mat-option value="Customer">{{'CUSTOMER' | translate}}</mat-option>
+                        <mat-option value="Supplier">{{'SUPPLIER' | translate}}</mat-option>
+                        <mat-option [value]="['Supplier', 'Customer']">{{'ROLE_BOTH' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field validationMessageContainer
+                    appearance='fill'>
+                    <mat-label>{{'EMAIL' | translate}}</mat-label>
+                    <input matInput
+                        [placeholder]="('EMAIL' | translate) + ' (' + ('OPTIONAL' | translate) +')'"
+                        formControlName='email'
+                        [value]="form.controls.email.value | lowercase"
+                        class="always-ltr">
+                </mat-form-field>
+            </div>
+            <div fxFlex="100"
+                fxFlex.xs="100"
+                class="px4">
+                <mat-checkbox class="checkbox my8"
+                    formControlName="agreement">
+                    I agree with the <a routerLink="/conditions"
+                        class="link fw-bold">conditions</a>
+                </mat-checkbox>
+            </div>
+            <div fxFlex="100"
+                class="px4"
+                fxLayout="row warp"
+                fxLayoutAlign="space-between center">
+                <button class="btn btn-green btn-xl mt12"
+                    (click)="callOtp()"
+                    [disabled]="form.invalid || !form.controls.agreement.value || loading">
+                    {{'REGISTER' | translate}}
+                    &nbsp;&nbsp;&nbsp;
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

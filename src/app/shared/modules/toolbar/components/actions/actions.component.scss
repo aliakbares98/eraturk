@@ -1,0 +1,17 @@
+@import 'settings/settings.scss';
+
+.mat-icon {
+    color: #5F6563 !important;
+}
+
+.edit:hover {
+    .mat-icon {
+        color: $blue !important;
+    }
+}
+
+.delete:hover {
+    .mat-icon {
+        color: $red !important;
+    }
+}

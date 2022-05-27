@@ -1,0 +1,69 @@
+<div>
+    <div class="toolbar--list p8 br-lg bg-second mb16"
+        fxLayout='row'
+        fxLayoutAlign="start center"
+        fxLayoutAlign.xs="center center">
+        <p class="pr40 pl32"
+            fxHide.xs>{{'SORT_BY'|translate}}:</p>
+        <mat-button-toggle-group fxLayoutGap="30px"
+            class="br-lg"
+            appearance="legacy">
+            <mat-button-toggle class="white br-lg"
+                value="All"
+                checked>{{'All'|translate}}</mat-button-toggle>
+            <mat-button-toggle class="white br-lg"
+                value="Product">{{'HEADER.PRODUCTS'|translate}}</mat-button-toggle>
+            <mat-button-toggle class="white br-lg"
+                value="Media">{{'HEADER.MEDIA'|translate}}</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <!-- selling_pruducts -->
+
+    <div class="section">
+        <swiper [slidesPerView]="'auto'"
+            [spaceBetween]="10"
+            #swipSelling>
+            <ng-template swiperSlide
+                *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                <era-product-card-vertical></era-product-card-vertical>
+            </ng-template>
+        </swiper>
+    </div>
+    <!-- visited_products -->
+    <div class="section pt20">
+        <swiper [slidesPerView]="'auto'"
+            [spaceBetween]="10"
+            #swipVisited>
+            <ng-template swiperSlide
+                *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                <era-product-card-vertical></era-product-card-vertical>
+            </ng-template>
+        </swiper>
+    </div>
+    <!-- category_name -->
+    <div class="section pt20">
+        <swiper [slidesPerView]="'auto'"
+            [spaceBetween]="10"
+            #swipCategoryName>
+            <ng-template swiperSlide
+                *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                <era-product-card-content></era-product-card-content>
+            </ng-template>
+        </swiper>
+    </div>
+</div>
+<!-- Pagination -->
+<ul class="meal-list">
+    <li *ngFor="let meal of meals | paginate: { itemsPerPage: 10, currentPage: page, totalItems: 11 }">
+        {{ meal }}
+    </li>
+</ul>
+<div class="pagination bg-second br-lg px16 py8"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayout.xs="column-reverse">
+    <p>Total: <strong class="green">10</strong></p>
+    <div fxFlex
+        fxHide.xs></div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

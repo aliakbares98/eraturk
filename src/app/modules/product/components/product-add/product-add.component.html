@@ -1,0 +1,144 @@
+<div class="bg-second br-lg"
+    ngClass.gt-xs="p32"
+    ngClass.xs="p16">
+    <h4>{{title}}</h4>
+    <form [formGroup]="form"
+        fxLayout="column"
+        fxLayoutGap="4px">
+        <div fxLayout="row wrap"
+            fxLayoutAlign="space-between"
+            fxLayout.xs="column"
+            fxLayoutGap='4px'>
+            <div fxFlex>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>Title</mat-label>
+                    <input matInput
+                        placeholder='Title'
+                        formControlName='title'
+                        required>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>Code</mat-label>
+                    <input matInput
+                        placeholder='Code'
+                        formControlName='code'
+                        required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field appearance='fill'
+            validationMessageContainer>
+            <mat-label>Description</mat-label>
+            <textarea matInput
+                rows="6"
+                placeholder='Description'
+                formControlName='description'></textarea>
+        </mat-form-field>
+
+        <!-- <mat-form-field class="example-full-width"
+            appearance='fill'
+            validationMessageContainer>
+            <mat-label>Product Template</mat-label>
+            <input type="text"
+                placeholder="Pick one"
+                aria-label="Number"
+                matInput
+                formControlName="productIdInput"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete"
+                (optionSelected)="onTemplateSelected($event)"
+                [displayWith]="displayProductTemplate">
+                <mat-option *ngFor="let template of productTemplateOptions | async"
+                    [value]="template">
+                    {{template.title}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field> -->
+
+        <div class="template"
+            ngClass.gt-xs="template--certain-height"
+            fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutGap="16px"
+            fxLayoutAlign="start stretch"
+            fxLayoutAlign.xs="center stretch">
+            <div fxFlex="0 0 264px"
+                class="p24 bg-third br-lg overflow-hidden"
+                fxLayout="column">
+                <h6>Product Templates</h6>
+                <div class="items"
+                    fxFlex
+                    fxLayout="column"
+                    fxLayoutGap="4px">
+                    <div class="item bg-forth p8 pointer"
+                        fxLayout="row"
+                        fxLayoutGap="8px"
+                        fxLayoutAlign="start center"
+                        *ngFor="let template of productTemplates"
+                        [ngClass]="{'selected': template.selected}"
+                        (click)="onTemplateSelected(template)">
+                        <span fxFlex="0 0 30px"
+                            class="checkbox"
+                            [ngClass]="{'display-none': template.selected}"></span>
+                        <span fxFlex="0 0 30px"
+                            class="checkbox checkbox--selected center"
+                            [ngClass]="{'display-none': !template.selected}">
+                            <img src="../../../../../assets/images/decorator/tick-xs.png"
+                                alt="">
+                        </span>
+                        <span class="title "
+                            fxFlex>{{template.title}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- No product template selected -->
+            <div *ngIf="!selectedTemplate"
+                class="bg-third br-lg p20"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="center center">
+                <h4 class="op6 center"
+                ngClass.xs="fs-lg mb0">No product template selected!</h4>
+            </div>
+            <div *ngIf="selectedTemplate"
+                fxFlex
+                fxLayout="column"
+                class="bg-third br-lg"
+                ngClass.gt-xs="p20"
+                ngClass.xs="p4">
+                <!-- Features -->
+                <div class="features p8">
+                    <div formArrayName="features"
+                        fxLayout="column"
+                        fxLayoutGap="4px"
+                        *ngFor="let category of selectedTemplate?.featureCategories">
+                        <h4 class="mb16">
+                            <mat-icon>apps</mat-icon>
+                            {{category.title}} features
+                        </h4>
+                        <ng-container fxLayout.xs="column"
+                            *ngFor="let feature of featuresOfCategory(category)"
+                            [formGroupName]="getFeatureFormId(feature)">
+                            <era-input-types [config]="prepareInputConfig(feature)">
+                            </era-input-types>
+                            <mat-divider></mat-divider>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <era-add-footer ngClass.xs="pt24"
+            [form]='form'
+            [disableCancel]="true"
+            [loading]='loading'
+            (onSave)="save()">
+        </era-add-footer>
+    </form>
+</div>

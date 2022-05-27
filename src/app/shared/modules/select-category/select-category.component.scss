@@ -1,0 +1,14 @@
+@import 'tools/tools.scss';
+
+
+:host {
+    display: block;
+    width: 800px;
+    max-width: calc(100vw - 50px);
+}
+
+@include xs {
+    h4 {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,64 @@
+<div class="header-mobile"
+    [class.is-mobile]="mobileQuery.matches"
+    fxLayout="column"
+    fxLayoutAlign="start stretch">
+
+    <mat-toolbar fxLayout="row"
+        fxLayoutAlign="start center"
+        [ngClass]="{'bg-first fixed': snav.opened}">
+        <img src="../../../../assets/images/logo/logo.png"
+            width="58px"
+            height="57px"
+            alt="logo-eraturk"
+            routerLink="/">
+        <div fxFlex></div>
+
+        <button class="btn button--register br-md py8 px24 mr8 text-color-main fs-sm"
+            [matMenuTriggerFor]="menu">
+            {{username}}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item
+                routerLink="/profile">
+                <mat-icon>person</mat-icon>
+                Profile
+            </button>
+            <button mat-menu-item
+                (click)="logout()">
+                <mat-icon>power_settings_new</mat-icon>
+                Logout
+            </button>
+        </mat-menu>
+        <button class="menu-icon-button contrary"
+            mat-icon-button
+            (click)="snav.toggle()">
+            <mat-icon class="mat-icon-md">{{snav.opened ? 'close' : 'menu'}}</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+        <mat-sidenav #snav
+            [mode]="'over'"
+            [fixedInViewport]="mobileQuery.matches"
+            fxFlex="0 0 100vw">
+            <div class="navbar mt28 px28 pb40"
+                fxLayout="column"
+                fxLayoutGap="8px"
+                fxFlex>
+                <ng-container *ngFor="let item of headerItems">
+                    <a class="navbar_item p16 bg-third pointer br-md fs-sm"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        [routerLink]='item.link'
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        (click)="snav.close()">
+                        <mat-icon class="navbar_item_icon mr16">{{item.icon}}</mat-icon>
+                        <span class="navbar_item_title">{{item.textToken | translate}}</span>
+                    </a>
+                </ng-container>
+            </div>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>

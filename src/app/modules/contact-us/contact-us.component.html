@@ -1,0 +1,98 @@
+<div class="page">
+    <div class="container"
+        fxLayout="row"
+        fxLayoutGap="40px"
+        fxLayout.xs="column"
+        fxLayoutGap.xs="130px">
+        <div fxFlex="0 0 400px">
+            <div class="form-wrapper bg-white p40 contrary br-lg">
+                <h3>{{'HEADER.CONTACT_US'|translate}}</h3>
+                <form [formGroup]="form"
+                    fxLayout='column'
+                    fxLayoutGap="10px">
+                    <mat-form-field validationMessageContainer
+                        appearance='fill'>
+                        <mat-label>{{'NAME'|translate}}</mat-label>
+                        <input matInput
+                            placeholder="{{'NAME'|translate}}"
+                            formControlName='name'
+                            required
+                            class="always-ltr">
+                    </mat-form-field>
+                    <mat-form-field validationMessageContainer
+                        appearance='fill'>
+                        <mat-label>{{'EMAIL'|translate}}</mat-label>
+                        <input matInput
+                            placeholder="{{'EMAIL'|translate}}"
+                            formControlName='email'
+                            required
+                            class="always-ltr">
+                    </mat-form-field>
+                    <mat-form-field validationMessageContainer
+                        appearance='fill'>
+                        <mat-label>{{'PHONE_NUMBER'|translate}}</mat-label>
+                        <input matInput
+                            placeholder="{{'PHONE_NUMBER'|translate}}"
+                            formControlName='phoneNumber'
+                            class="always-ltr">
+                    </mat-form-field>
+                    <mat-form-field validationMessageContainer
+                        appearance='fill'>
+                        <mat-label>{{'MESSAGE'|translate}}</mat-label>
+                        <textarea matInput
+                            rows="4"
+                            placeholder="{{'MESSAGE'|translate}}"
+                            formControlName='message'
+                            required
+                            class="always-ltr"></textarea>
+                    </mat-form-field>
+                    <div class="pt24">
+                        <button class="btn btn-green btn-lg"
+                            [disabled]='form.invalid'
+                            (click)="send()">
+                            send
+                            <mat-icon class="ml32">arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div fxFlex
+            fxLayout.xs="column"
+            fxLayoutGap.xs="40px">
+            <!-- Map -->
+            <div class="bg_map bg-second p16 br-lg">
+                <div class="osm-map"
+                    leaflet
+                    [leafletOptions]="options">
+                </div>
+            </div>
+            <div class="information mt20 "
+                fxLayout="row"
+                fxLayout.xs="column"
+                fxLayoutGap.xs="20px">
+                <div fxFlex="30">
+                    <p class="op6">{{'PHONE_NUMBER'|translate}} :</p>
+                    <p class="fs-sm">
+                        <img class="pl8 middle"
+                            src="../assets/images/home/lastLogo.png">
+                        (+90) 5500 001330
+                    </p>
+                </div>
+                <div fxFlex="30">
+                    <p class="op6">{{'EMAIL'|translate}} :</p>
+                    <p class="fs-sm">info@eraturk.com</p>
+                </div>
+                <div fxFlex="40">
+                    <p class="op6">{{'ADDRESS'|translate}} :</p>
+                    <p class="fs-sm">
+                        {{'PAGE.CONTACDT_US.Address'|translate}}
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

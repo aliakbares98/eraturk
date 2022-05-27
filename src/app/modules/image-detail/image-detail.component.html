@@ -1,0 +1,130 @@
+<div class="page">
+  <div class="container">
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs"></div>
+
+    <!-- Top -->
+    <div class="top mb24"
+      fxLayout="row"
+      fxLayoutGap="30px"
+      fxLayout.xs="column"
+      fxLayoutAlign="start">
+
+      <!-- Product Detailed Info -- For mobile -->
+      <div fxHide.gt-xs>
+        <ng-container *ngTemplateOutlet="mainDetails"></ng-container>
+      </div>
+
+      <!-- swiper_slider -->
+      <div class="slider bg-white br-lg"
+        fxFlex="0 0 456px"
+        fxFlex.xs="0 0 350px"
+        ngClass.xs="slider--mobile">
+        <era-gallery-slider></era-gallery-slider>
+      </div>
+
+      <!-- view_gallery -->
+      <div>
+        <div fxHide.xs>
+          <ng-container *ngTemplateOutlet="mainDetails"></ng-container>
+        </div>
+        <ng-template #mainDetails>
+          <h3>Your gallery image title</h3>
+          <div>
+            <mat-icon class="white">visibility</mat-icon>
+            <span class="pl4">12.23</span>
+            <mat-icon class="ml32 white">access_time</mat-icon>
+            <span class="pl4">2021/01/01 - 22:30</span>
+          </div>
+          <mat-divider class="my24 pt8"
+            fxHide.xs></mat-divider>
+        </ng-template>
+        <h4 ngClass.xs="pt12">description: </h4>
+        <p class="fs-base fw-normal pt8 op6"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed
+          do
+          eiusmod tempor
+          incididunt ut labore et
+          dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+          risus.
+          Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+          et
+          dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+          risus.
+          Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+          et
+          dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+          risus.
+          Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam. </p>
+        <mat-divider class="my24"></mat-divider>
+        <!-- btn_linke ... -->
+        <div class="pt20"
+          fxLayout.xs="row">
+          <button class="btn btn-dark btn-lg"
+            ngClass.xs="btn btn-dark btn-md">
+            <mat-icon>favorite</mat-icon><span class="pl8 fs-xs">Like</span>
+            <span class="pl8 op6">210 likes</span>
+          </button>
+          &nbsp;&nbsp;
+          <button class="btn btn-dark btn-lg"
+            ngClass.xs="btn btn-dark btn-md">
+            <mat-icon>bookmark_border</mat-icon><span class="pl8 fs-xs">Save</span>
+          </button>
+          &nbsp;&nbsp;
+          <button class="btn btn-dark btn-lg"
+            ngClass.xs="btn btn-dark btn-md">
+            <mat-icon>share</mat-icon><span class="pl8 fs-xs">Share</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- comment_title -->
+    <h3 class="pt40">Commnets
+      <span class="fs-sm green fw-normal pl12">3 comment</span>
+    </h3>
+
+    <era-comments></era-comments>
+
+    <!-- Related image -->
+    <div class="pt32">
+      <era-swiper-header class="mb24"
+        [title]='"Related image"'
+        moreLink='test'
+        (clickOnPrev)='swipSpecialOffer.swiperRef.slidePrev()'
+        (clickOnNext)='swipSpecialOffer.swiperRef.slideNext()'></era-swiper-header>
+      <swiper [slidesPerView]="'auto'"
+        [spaceBetween]="10"
+        [slidesPerGroup]="3"
+        [pagination]="{clickable: true}"
+        #swipSpecialOffer>
+        <ng-template swiperSlide
+          *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+          <era-product-card-content></era-product-card-content>
+        </ng-template>
+      </swiper>
+    </div>
+
+    <!-- Product in his field -->
+    <div class="py32">
+      <era-swiper-header class="mb24"
+        [title]='"Product in his field"'
+        moreLink='test'
+        (clickOnPrev)='swipSpecialOffer.swiperRef.slidePrev()'
+        (clickOnNext)='swipSpecialOffer.swiperRef.slideNext()'></era-swiper-header>
+      <swiper [slidesPerView]="'auto'"
+        [spaceBetween]="10"
+        [slidesPerGroup]="3"
+        [pagination]="{clickable: true}"
+        #swipSpecialOffer>
+        <ng-template swiperSlide
+          *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+          <era-product-card-vertical></era-product-card-vertical>
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+</div>

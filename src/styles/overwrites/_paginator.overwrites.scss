@@ -1,0 +1,56 @@
+@import 'settings/settings.scss';
+
+
+.ngx-pagination {
+    padding: 0;
+
+    a,
+    button {
+        cursor: pointer;
+
+        span {
+            transition: $transition;
+        }
+
+        &:hover {
+            background-color: transparent !important;
+
+            span {
+                color: $green;
+            }
+        }
+    }
+
+    li {
+
+        &.pagination-next,
+        &.pagination-previous {
+            a {
+                transition: $transition;
+
+                &:hover {
+                    color: $green;
+                }
+            }
+
+            &.disabled {
+
+                span,
+                &::before,
+                &::after {
+                    opacity: .5;
+                }
+            }
+        }
+
+        &.current {
+            background-color: $green;
+            border-radius: $border-radius-sm;
+        }
+    }
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+    color: $text-color-main !important;
+}

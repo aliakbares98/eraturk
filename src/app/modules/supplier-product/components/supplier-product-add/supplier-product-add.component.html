@@ -1,0 +1,85 @@
+<mat-card class="bg-third">
+    <h3 class="white">Fill in the sentence</h3>
+    <form [formGroup]="form" >
+        {{getCommonSentencePartBefore('template')}}
+        <span class="sentence-part">
+            <select validationMessageContainer
+                (ngModelChange)="onChangeProductTemplate($event)"
+                formControlName="parentId"
+                required
+                value='null'
+                class="product-custom-input product-custom-input--select"
+                [disabled]="productTemplates.length === 0">
+                <option [ngValue]="null">select type</option>
+                <option *ngFor="let item of productTemplatesList"
+                    [ngValue]="item.title">{{item.title}}
+                </option>
+            </select>
+        </span>
+
+        <!-- Sentence -->
+        <span *ngIf="selectedTemplate; else spinner">
+            <span class="sentence-part">
+                {{getCommonSentencePartBefore('title')}}
+                <input type="text"
+                    validationMessageContainer
+                    placeholder=''
+                    formControlName='title'
+                    required
+                    class="product-custom-input">
+            </span>
+
+            <ng-container formArrayName="features">
+                <!-- Required Features -->
+                <span *ngFor="let feature of requiredFeatures"
+                    [formGroupName]="getFeatureFormId(feature)"
+                    class="sentence-part">
+                    {{getRequiredSentencePart(feature)}}
+                    <era-input-types [config]=" prepareInputConfig(feature)">
+                    </era-input-types>
+                    {{getRequiredSentenceTail(feature)}}
+                </span>
+
+                <!-- Optional Features -->
+                <h3 *ngIf="requiredFeaturesList.length > 0"
+                    class="mt40 white">Fill in for better visibility (optional)</h3>
+                <span *ngFor="let feature of optionalFeatures"
+                    [formGroupName]="getFeatureFormId(feature)"
+                    class="sentence-part">
+                    {{getOptionnalSentencePart(feature)}}
+                    <era-input-types [config]="prepareInputConfig(feature)">
+                    </era-input-types>
+                    {{getOptionnalSentenceTail(feature)}}
+                </span>
+            </ng-container>
+
+            <span class="white"> with description below:</span>
+            <mat-form-field appearance='fill'
+                validationMessageContainer class="pt8">
+                <mat-label>Description</mat-label>
+                <textarea matInput
+                    rows="2"
+                    placeholder='Description'
+                    formControlName='description'></textarea>
+            </mat-form-field>
+        </span>
+
+        <!--
+        <h3>Upload product pictures</h3>
+        <era-file-uploader *ngIf="documentType"
+        [config]='uploaderConfig'></era-file-uploader>
+        -->
+
+        <!-- Spinner -->
+        <ng-template #spinner>
+            <era-spinner></era-spinner>
+        </ng-template>
+
+        <era-add-footer [form]='form'
+            [disableCancel]="true"
+            [loading]='loading'
+            (onSave)="save()">
+        </era-add-footer>
+    </form>
+  </mat-card>
+

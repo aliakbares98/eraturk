@@ -1,0 +1,21 @@
+<div class="bg-second br-lg p32">
+  <h3>{{'PROFILE.PERSONAL_INFO'|translate}}
+    <mat-icon class="pl48 dark-grey pointer"
+      routerLink="/profile/personal-info/edit">edit</mat-icon>
+  </h3>
+  <div fxLayout="row"
+    fxLayoutGap="139px"
+    fxLayoutGap.xs="110px">
+    <div fxLayout.xs="column">
+      <p class="fw-bold fs-sm pt16 dark-grey"
+        *ngFor="let item of person">{{item}}</p>
+    </div>
+    <div *ngFor="let item of personalInfo">
+      <p class="fs-sm pt16">{{item.FirstName}}</p>
+      <p class="fs-sm pt16">{{item.LastName}}</p>
+      <p class="fs-sm pt16">{{item.PhoneNumber}}</p>
+      <p class="fs-sm pt16">{{item.Country}}</p>
+      <p class="fs-sm pt16">{{item.Province}}</p>
+    </div>
+  </div>
+</div>

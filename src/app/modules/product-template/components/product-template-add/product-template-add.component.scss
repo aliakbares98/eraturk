@@ -1,0 +1,25 @@
+@import "settings/settings.scss";
+
+.select-category-button {
+  height: 59px;
+}
+
+textarea {
+  height: 81px;
+}
+
+::ng-deep {
+
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $green;
+  }
+}
+
+.bg-card {
+  background-color: $background-second;
+}
+
+#page-container .sh-accordion .panel .panel-collapse .panel-body {
+  background: #262626;
+}

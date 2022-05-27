@@ -1,0 +1,49 @@
+<div class="form-wrapper br-lg bg-third p32" >
+    <h3>
+        Add Comments
+    </h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor
+        incididunt ut labore
+        et dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam </p>
+    <form class="pt32"
+        [formGroup]="form"
+        fxLayout="column"
+        fxLayoutGap="8px">
+        <mat-form-field validationMessageContainer
+            appearance='fill'>
+            <mat-label>Enter name</mat-label>
+            <input matInput
+                placeholder="Enter name ..."
+                formControlName='name'
+                required
+                class="always-ltr">
+        </mat-form-field>
+        <mat-form-field validationMessageContainer
+            appearance='fill'>
+            <mat-label>Enter email</mat-label>
+            <input matInput
+                placeholder="Enter email ..."
+                formControlName='email'
+                required
+                class="always-ltr">
+        </mat-form-field>
+        <mat-form-field validationMessageContainer
+            appearance='fill'>
+            <mat-label>Enter message ...</mat-label>
+            <textarea matInput
+                rows="4"
+                placeholder="Enter message ..."
+                formControlName='message'
+                required
+                class="always-ltr"></textarea>
+        </mat-form-field>
+        <div class="mt8">
+            <button class="btn btn-green btn-lg"
+                [disabled]='form.invalid'>
+                send
+                <mat-icon class="ml32">arrow_forward</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>

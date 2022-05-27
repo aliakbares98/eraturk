@@ -1,0 +1,32 @@
+<h4 mat-dialog-title
+    class="fs-2xl">{{title}}
+</h4>
+<form [formGroup]='form'>
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="8px">
+        <div>
+            <mat-form-field appearance="fill"
+                validationMessageContainer>
+                <mat-label>{{'NAME'|translate}}</mat-label>
+                <input matInput
+                    placeholder="{{'NAME'|translate}}"
+                    formControlName="name"
+                    required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill"
+                validationMessageContainer>
+                <mat-label>{{'VALUE'|translate}}</mat-label>
+                <textarea matInput
+                placeholder="{{'VALUE'|translate}}"
+                formControlName='value'
+                required
+                class="always-ltr"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <era-add-footer [form]="form"
+        (onCancel)="closeDialog()"
+        (onSave)="save()">
+    </era-add-footer>
+</form>

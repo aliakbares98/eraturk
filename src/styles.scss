@@ -1,0 +1,34 @@
+// Leaflet
+@import '~leaflet/dist/leaflet.css';
+
+// Material
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Snotify
+@import '~ng-snotify/styles/material.scss';
+
+// Swiper
+@import "~swiper/swiper-bundle";
+@import "~swiper/components/navigation/navigation";
+@import "~swiper/components/thumbs/thumbs";
+
+// ngx-datatable
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+// Tree
+@import '~@circlon/angular-tree-component/css/angular-tree-component.css';
+
+// Videogular
+@import '~@videogular/ngx-videogular/fonts/videogular.css';
+
+// Local styles
+@import 'settings/settings.scss';
+@import 'tools/tools.scss';
+@import 'generic/generic.scss';
+@import 'elements/elements.scss';
+@import 'objects/objects.scss';
+@import 'theme/theme.scss';
+@import 'utilities/utilities.scss';
+@import 'overwrites/overwrites.scss';

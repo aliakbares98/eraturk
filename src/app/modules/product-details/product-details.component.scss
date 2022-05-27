@@ -1,0 +1,29 @@
+@import 'settings/settings.scss';
+
+.slider {
+    height: 456px;
+
+    &--mobile {
+        height: 350px;
+    }
+}
+
+.link {
+    color: #696969;
+    transition: $transition;
+
+    &:hover {
+        color: $green;
+    }
+}
+
+.info-btns {
+    &_contact {
+        &:hover {
+            mat-icon {
+                transition: $transition;
+                color: $text-color-main;
+            }
+        }
+    }
+}

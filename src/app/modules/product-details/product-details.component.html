@@ -1,0 +1,228 @@
+<div class="page">
+    <div class="container">
+
+        <div class="breadcrumbs"></div>
+
+        <!-- Details -->
+        <div class="top mb24"
+            fxLayout="row"
+            fxLayoutGap="30px"
+            fxLayout.xs="column"
+            fxLayoutAlign="start">
+            <!-- Product Detailed Info -- For mobile -->
+            <div fxHide.gt-xs>
+                <ng-container *ngTemplateOutlet="mainDetails"></ng-container>
+            </div>
+
+            <div class="slider bg-white br-lg"
+                fxFlex="0 0 456px"
+                fxFlex.xs="0 0 350px"
+                ngClass.xs="slider--mobile">
+                <era-gallery-slider></era-gallery-slider>
+            </div>
+            <div fxFlex>
+                <!-- Product Detailed Info -- For greater than mobile -->
+                <div fxHide.xs>
+                    <ng-container *ngTemplateOutlet="mainDetails"></ng-container>
+                </div>
+
+                <ng-template #mainDetails>
+                    <h3>Veneered MDF Crs</h3>
+                    <!-- Range -->
+                    <div fxLayout="row"
+                        fxLayout.xs="row wrap"
+                        fxLayoutAlign="start center"
+                        fxLayoutGap="8px">
+                        <era-star-rating [rating]='rate'
+                            (onRateUpdated)="rateUpdated($event)"
+                            fxFlex.xs="0 0 150px"></era-star-rating>
+                        <span fxFlex.xs="0 0 40px">
+                            <span class="yellow">{{rate}}</span><span class="white">/5</span>
+                        </span>
+                        <span class="dark-grey"
+                            fxFlex.xs>
+                            From 574 user
+                        </span>
+                        <span class="inline-block"
+                            ngClass.gt-xs="ml24"
+                            ngClass.xs="ml0 mt16"
+                            fxFlex.xs="100%">
+                            <mat-icon>schedule</mat-icon>
+                            2021/01/01 - 22:30
+                        </span>
+                    </div>
+                    <mat-divider class="mt12 mb4" fxHide.xs></mat-divider>
+                </ng-template>
+                <div class="py8">
+                    <strong class="bolder">Category: &nbsp;&nbsp;</strong><span class="white">name</span>
+                </div>
+                <div class="py8">
+                    <strong class="bolder">Country: &nbsp;&nbsp;</strong>
+                    <img src="../../../../../assets/images/flag/flag-turkey.png"
+                        class="middle mr4"
+                        alt="">
+                    <span class="white">Turkey</span>
+                </div>
+                <div class="py8">
+                    <strong class="bolder">Business Type: &nbsp;&nbsp;</strong><span class="white">Wholeseller</span>
+                </div>
+                <mat-divider class="mt4 mb12"></mat-divider>
+                <p class="bold mb8">Supplier:</p>
+                <!-- Company Info -->
+                <div fxLayout="row"
+                    fxLayoutGap="8px">
+                    <button class="btn btn-white btn-lg">LC WIKIKI</button>
+                    <button class="btn btn-dark btn-lg">
+                        <mat-icon class="mr8">storefront</mat-icon>LC waikiki
+                    </button>
+                </div>
+                <!-- Link -->
+                <p class="link mt16">
+                    <mat-icon>link</mat-icon> <span class="pointer"
+                        id="store-link"> www.eraturk.com/storename</span>
+                    <button mat-icon-button
+                        class="ml16"
+                        (click)="onClickOnLink('store-link')">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                </p>
+                <mat-divider class="mt4 mb16"></mat-divider>
+                <!-- Contact Info -->
+                <div class="info-btns br-md"
+                    fxLayout="row"
+                    fxLayoutGap="8px"
+                    fxLayout.xs="column">
+                    <button class="info-btns_contact p16 bg-green text-color-main br-md"
+                        *ngIf="!showContactInfo; else contactInfo"
+                        (click)="showContactInfo = true"
+                        fxFlex="0 1 240px"
+                        fxFlex.xs="100%">
+                        <mat-icon class="mr8">mouse</mat-icon>
+                        Contact Info
+                    </button>
+                    <ng-template #contactInfo>
+                        <button class="btn-dark btn-lg text-color-main default"
+                            fxFlex.xs="100%">
+                            <img src="../../../../../assets/images/flag/flag-turkey.png"
+                                class="middle mr4"
+                                alt="">
+                            (+90) 5500 001330 &nbsp;&nbsp;&nbsp; info@eraturk.com
+                        </button>
+                    </ng-template>
+                    <button class="bg-third text-color-main p16 br-md"
+                        fxFlex="0 1 120px"
+                        fxFlex.xs="100%">
+                        <mat-icon class="mat-icon-sm">chat</mat-icon>
+                        Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- From this supplier -->
+        <ng-container>
+            <era-swiper-header class="py24"
+                [title]='"From this supplier"'
+                [moreLink]="'/'"
+                (clickOnPrev)='fromThisSupplierSwiper.swiperRef.slidePrev()'
+                (clickOnNext)='fromThisSupplierSwiper.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #fromThisSupplierSwiper>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-vertical></era-product-card-vertical>
+                </ng-template>
+            </swiper>
+        </ng-container>
+
+        <!-- Info -->
+        <div class="pt40">
+            <h3 class="mb24">More Info</h3>
+            <mat-tab-group animationDuration='0'
+                [selectedIndex]="0">
+                <mat-tab label="Product detail">
+                    <p class="green">
+                        The title of the frequently asked question
+                    </p>
+                    <p class="mt8 white">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed risus.
+                        Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+                    </p>
+                </mat-tab>
+                <mat-tab label="Compony profile">
+                    <div class="fs-lg">
+                        <span class="fs-3xl green mr16 bolder">54,002</span>
+                        <span class="white">Product</span>
+                    </div>
+                    <div class="mt16">
+                        <button class="btn btn-white btn-lg">LC WIKIKI</button>
+                        &nbsp;
+                        <button class="btn btn-dark btn-lg">
+                            <mat-icon class="mr8">storefront</mat-icon>LC waikiki
+                        </button>
+
+                    </div>
+                    <p class="link mt8">
+                        <mat-icon>link</mat-icon> <span class="pointer"
+                            id="store-link"> www.eraturk.com/storename</span>
+                        <button mat-icon-button
+                            class="ml16 icon--copy"
+                            (click)="onClickOnLink('store-link')">
+                            <mat-icon>content_copy</mat-icon>
+                        </button>
+                    </p>
+                    <p class="mt16 white">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed risus.
+                        Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+                    </p>
+                    <div class="mt24">
+                        <a href=""
+                            class="green underline">See the products of this seller</a>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Comments">
+                    <era-comments></era-comments>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+        <!-- Related Products -->
+        <ng-container>
+            <era-swiper-header class="py24"
+                [title]='"Related Products"'
+                [moreLink]="'/'"
+                (clickOnPrev)='relatedProductsSwiper.swiperRef.slidePrev()'
+                (clickOnNext)='relatedProductsSwiper.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #relatedProductsSwiper>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-vertical></era-product-card-vertical>
+                </ng-template>
+            </swiper>
+        </ng-container>
+
+        <!-- Related Media -->
+        <ng-container>
+            <era-swiper-header class="py24"
+                [title]='"Know more media"'
+                [moreLink]="'/'"
+                (clickOnPrev)='relatedMediaSwiper.swiperRef.slidePrev()'
+                (clickOnNext)='relatedMediaSwiper.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #relatedMediaSwiper>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-content></era-product-card-content>
+                </ng-template>
+            </swiper>
+        </ng-container>
+    </div>
+</div>

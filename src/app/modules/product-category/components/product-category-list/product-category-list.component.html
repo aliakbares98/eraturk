@@ -1,0 +1,37 @@
+<div class="toolbar--list p8 br-lg bg-second mb16"
+    fxLayout='row'
+    fxLayoutAlign="start center">
+    <p class="m0 ml12" fxHide.gt-xs>{{'Product_Categories'|translate}}</p>
+    <div fxFlex></div>
+    <button class="btn btn-add green br-lg py4 px20 fs-sm"
+        (click)="openAdd(null)">{{"ADD_ROOT" | translate}}<mat-icon class="ml8">add</mat-icon></button>
+</div>
+
+<div class="bg-second p32 br-lg">
+    <Tree [nodes]="nodes"
+        [options]="options"
+        (moveNode)="nodeMoved($event)">
+        <ng-template #treeNodeTemplate
+            let-node
+            let-index="index">&nbsp;
+            <span (click)="clickOnNode(node)">{{ node.data.name }}</span>
+            <button mat-icon-button
+                color='primary'
+                (click)="openEdit(node)"
+                *ngIf="permissions.UpdateProductCategory | able">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button
+                color='warn'
+                *ngIf="!node.hasChildren && permissions.DeleteProductCategory | able"
+                (click)="deleteNode(node)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button
+                (click)="openAdd(node.id)"
+                *ngIf="permissions.CreateProductCategory | able">
+                <mat-icon>add</mat-icon>
+            </button>
+        </ng-template>
+    </Tree>
+</div>

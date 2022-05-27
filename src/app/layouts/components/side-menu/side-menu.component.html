@@ -1,0 +1,59 @@
+<div class="menu bg-second py12"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    ngClass.gt-xs="br-lg">
+    <!-- User Image -->
+    <div fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="15px"
+        class="px28">
+        <div class="user-image pointer bg-first br-round relative"
+            fxFlex="0 0 60px">
+            <img src="../../../assets/images/decorator/user.png"
+                alt=""
+                width="60px"
+                height="60px">
+            <span class="user-image_icon--edit center bg-white inline-block pointer br-round">
+                <mat-icon class="mat-icon-sm">edit</mat-icon>
+            </span>
+        </div>
+        <p class="fw-bold"
+            fxFlex>Rahman Ebrahimi</p>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar mt28 px28"
+        fxLayout="column"
+        fxLayoutGap="8px"
+        fxFlex>
+        <ng-container *ngFor="let item of menuItems">
+            <a class="navbar_item p16 bg-third pointer br-md fs-sm"
+                routerLinkActive="active-link"
+                [routerLink]='"/profile/" + item.link'
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                *ngIf="item.permission | able"
+                (click)="onMenuItemClicked($event)">
+                <mat-icon class="navbar_item_icon mr16">{{item.icon}}</mat-icon>
+                <span class="navbar_item_title">{{item.textToken | translate}}</span>
+            </a>
+        </ng-container>
+        <div fxFlex
+            class="space"></div>
+        <a class="navbar_item p16 bg-third pointer br-md fs-sm"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            routerLink="/">
+            <mat-icon class="navbar_item_icon mr16">home</mat-icon>
+            <span class="navbar_item_title">Eraturk Home</span>
+        </a>
+        <a class="navbar_item p16 pointer br-md fs-sm btn--sign-out"
+            routerLinkActive="active-link"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            (click)="logout()">
+            <mat-icon class="navbar_item_icon mr16">power_settings_new</mat-icon>
+            <span class="navbar_item_title">Logout</span>
+        </a>
+    </div>
+</div>

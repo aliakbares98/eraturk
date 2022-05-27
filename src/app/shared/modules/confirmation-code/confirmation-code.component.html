@@ -1,0 +1,23 @@
+<form [formGroup]="form"
+    fxLayout="column"
+    fxLayoutAlign="center space-between"
+    fxLayoutGap="8px"
+    class="bg-first br-md p8"
+    ngClass.xs="mb4">
+    <button class="btn btn-dark btn-lg"
+        color="primary"
+        (click)="requestOtpCodeCellphone()"
+        [disabled]="form.controls.value.invalid">
+        {{'REQUEST_CONFIRMATION_CODE'|translate}}
+    </button>
+    <mat-form-field appearance='fill'
+        validationMessageContainer
+        class="mb0">
+        <mat-label>{{'CODE'|translate}}</mat-label>
+        <input matInput
+            placeholder="{{'CODE'|translate}}"
+            formControlName='otp'
+            required>
+    </mat-form-field>
+  
+</form>

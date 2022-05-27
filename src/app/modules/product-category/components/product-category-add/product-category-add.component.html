@@ -1,0 +1,14 @@
+<h4 mat-dialog-title class="fs-2xl">{{title}}</h4>
+<form [formGroup]="form">
+    <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <mat-label>{{'TITLE'|translate}}</mat-label>
+        <input matInput
+            placeholder='Title'
+            formControlName='title'
+            required>
+    </mat-form-field>
+
+    <era-add-footer [form]="form" [loading]="loading"  (onCancel)="closeDialog()"
+    (onSave)="save()"></era-add-footer>
+</form>

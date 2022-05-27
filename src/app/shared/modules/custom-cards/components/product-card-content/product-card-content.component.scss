@@ -1,0 +1,32 @@
+@import 'settings/settings.scss';
+
+$card-width: 303px;
+
+.card {
+    width: $card-width;
+
+    &_content {
+        height: 165px;
+    }
+
+    &_lable {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+    }
+
+    &::after {
+        content: '';
+        background-color: $background-second;
+        height: 10px;
+        width: 80%;
+        position: absolute;
+        left: 10%;
+        bottom: -10px;
+        border-radius: 0 0 25px 25px;
+    }
+}
+
+.card--loading {
+    width: $card-width;
+}

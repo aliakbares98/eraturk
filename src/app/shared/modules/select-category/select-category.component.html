@@ -1,0 +1,17 @@
+<h4 mat-dialog-title class="fs-2xl white" >{{'PRODUCT_TEMPLATE_ADD_TITLE'|translate}}</h4>
+
+<Tree class="select-category-tree white"
+    [nodes]="nodes"
+    [options]="options"
+    (focus)="onFocus($event)">
+    <ng-template #treeNodeTemplate
+        let-node
+        let-index="index">
+        <span (click)="clickOnNode(node)"
+            [ngClass]="{'disabled-node': node.hasChildren}">{{ node.data.name }}</span>
+    </ng-template>
+</Tree>
+
+<era-add-footer [disableSave]="true"
+    (onCancel)="closeDialog()">
+</era-add-footer>

@@ -1,0 +1,33 @@
+@import 'settings/settings.scss';
+
+.filters {
+    background-color: $background-second;
+    border-radius: 25px;
+
+    .title {
+        color: $text-color-main;
+    }
+
+    .list--categories {
+        .item {
+            cursor: pointer;
+
+            * {
+                color: $text-color-main;
+                transition: color .3s ease-in-out;
+            }
+
+            .text {
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            &:hover {
+                * {
+                    color: $green;
+                }
+            }
+        }
+    }
+}
+

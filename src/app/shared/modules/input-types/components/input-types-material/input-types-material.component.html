@@ -1,0 +1,141 @@
+<span [formGroup]="config.formGroup"
+    fxLayout="row wrap"
+    fxLayoutGap="8px"
+    fxLayoutGap.xs="0">
+    <span fxFlex>
+        <!-- String -->
+        <mat-form-field *ngIf="determineVisibility(featureTypeEnum.String)"
+            appearance='fill'
+            validationMessageContainer>
+            <mat-label>{{config.title}}</mat-label>
+
+            <input matInput
+                [placeholder]='config.placeHolder'
+                [formControlName]='config.controlName'>
+        </mat-form-field>
+
+        <!-- Number -->
+        <mat-form-field *ngIf="determineVisibility(featureTypeEnum.Numeric)"
+            appearance='fill'
+            validationMessageContainer>
+            <mat-label>{{config.title}}</mat-label>
+            <input type="number"
+                matInput
+                [placeholder]='config.placeHolder'
+                [formControlName]='config.controlName'>
+        </mat-form-field>
+
+        <!-- DateTime -->
+        <mat-form-field *ngIf="determineVisibility(featureTypeEnum.DateTime)"
+            appearance='fill'
+            validationMessageContainer>
+            <mat-label>{{config.title}}</mat-label>
+            <input matInput
+                [matDatepicker]="picker"
+                [formControlName]='config.controlName'
+                [disabled]='true'
+                [required]="config.required">
+            <mat-datepicker-toggle matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker
+                [disabled]='false'></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Range -->
+        <div *ngIf="determineVisibility(featureTypeEnum.Range)">
+            <p class="text-color-main mb4">{{config.title}}</p>
+            <div class="range-inputs-wrapper"
+                fxLayout="row"
+                fxLayoutGap="8px"
+                fxLayout.xs="column"
+                fxLayoutGap.xs="4px">
+                <mat-form-field appearance='fill'
+                    validationMessageContainer
+                    fxFlex="0 0 150px"
+                    fxFlex.xs="auto">
+                    <mat-label>From</mat-label>
+                    <input matInput
+                        type="number"
+                        placeholder='From'
+                        formControlName='from'
+                        [required]="config.required">
+                </mat-form-field>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer
+                    fxFlex="0 0 150px"
+                    fxFlex.xs="auto">
+                    <mat-label>To</mat-label>
+                    <input matInput
+                        type="number"
+                        placeholder='To'
+                        formControlName='to'
+                        [required]="config.required">
+                </mat-form-field>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer
+                    fxFlex="0 0 150px"
+                    fxFlex.xs="auto">
+                    <mat-label>Unit of measure</mat-label>
+                    <input matInput
+                        type="text"
+                        placeholder='UOM'
+                        formControlName='uom'
+                        [required]="config.required">
+                </mat-form-field>
+
+                <!-- Constraints - ValidRange -->
+                <ng-container *ngIf="constraintValues.length && config.featureType === featureTypes.range">
+                    <mat-form-field appearance='fill'>
+                        <mat-label>{{config.title}} Options</mat-label>
+                        <mat-select (selectionChange)="onChangeRangeConstraints($event.value)">
+                            <mat-option *ngFor='let item of constraintValues'
+                                [value]='item'>
+                                from {{item.from}} to {{item.to}}
+                            </mat-option>
+                            <mat-option [value]="'customOption'"
+                                *ngIf="customOptionIsAllowed">
+                                Others
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- Quatity -->
+        <mat-form-field *ngIf="determineVisibility(featureTypeEnum.Quantity)"
+            appearance='fill'
+            validationMessageContainer>
+            <mat-label>{{config.title}}</mat-label>
+            <input matInput
+                [placeholder]='config.placeHolder'
+                [formControlName]='config.controlName'>
+        </mat-form-field>
+
+        <!-- Boolean -->
+        <mat-slide-toggle *ngIf="determineVisibility(featureTypeEnum.Boolean)"
+            formControlName='value'
+            color="primary">{{config.title}}</mat-slide-toggle>
+    </span>
+
+    <span *ngIf="constraintValues.length"
+        fxFlex>
+        <!-- Constraints - ValidOptions -->
+        <mat-form-field appearance='fill'
+            validationMessageContainer
+            *ngIf="config.featureType !== featureTypes.range">
+            <mat-label>{{config.title}} Options</mat-label>
+            <mat-select (selectionChange)="onChangeValidOptionsConstraints($event.value)"
+                [formControlName]="config.controlName">
+                <mat-option *ngFor='let item of constraintValues'
+                    [value]='item'>
+                    {{item}}
+                </mat-option>
+                <mat-option [value]="'customOption'"
+                    *ngIf="customOptionIsAllowed">
+                    Others
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </span>
+</span>

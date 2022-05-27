@@ -1,0 +1,19 @@
+@import 'settings/settings.scss';
+
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+
+    &_logo {
+        flex: 0 0 342px;
+    }
+
+    &_navbar {
+        &_notifications {
+            flex: 0 0 #{$notifications-height};
+            padding: 0 $header-padding 0 170px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@import 'settings/settings.scss';
+
+.hover-show-parent {
+  &:hover {
+    .hover-show-child {
+      display: block;
+    }
+  }
+}
+
+.hover-show-child {
+  display: none;
+}
+
+.btn-add {
+  border: 2px solid $green;
+}

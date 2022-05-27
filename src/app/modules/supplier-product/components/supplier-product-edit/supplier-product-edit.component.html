@@ -1,0 +1,73 @@
+<mat-card>
+    <h3>Fill in the sentence</h3>
+    <form [formGroup]="form">
+        {{getCommonSentencePartBefore('template')}}
+        <span class="sentence-part">
+            <select validationMessageContainer
+                formControlName="parentId"
+                required
+                value='null'
+                class="product-custom-input product-custom-input--select">
+                <option [ngValue]="null">select type</option>
+                <option *ngFor="let item of productTemplatesList"
+                    [ngValue]="item.title">{{item.title}}
+                </option>
+            </select>
+        </span>
+
+        <span *ngIf="selectedTemplate; else spinner">
+            <span class="sentence-part">
+                &nbsp;{{getCommonSentencePartBefore('title')}}
+                <input type="text" validationMessageContainer
+                    placeholder='Title'
+                    formControlName='title'
+                    required
+                    class="product-custom-input">
+            </span>
+
+            <ng-container formArrayName="features">
+                <!-- Required Features -->
+                <span *ngFor="let feature of requiredFeatures"
+                    [formGroupName]="getFeatureFormId(feature)"
+                    class="sentence-part">
+                    {{getRequiredSentencePart(feature)}}
+                    <era-input-types [config]="prepareInputConfig(feature)">
+                    </era-input-types>
+                    {{getRequiredSentenceTail(feature)}}
+                </span>
+
+                <!-- Optional Features -->
+                <h3 *ngIf="requiredFeaturesList.length > 0" class="mt40">Fill in for better visibility (optional)</h3>
+                <span *ngFor="let feature of optionalFeatures"
+                    [formGroupName]="getFeatureFormId(feature)"
+                    class="sentence-part">
+                    {{getOptionnalSentencePart(feature)}}
+                    <era-input-types [config]="prepareInputConfig(feature)">
+                    </era-input-types>
+                    {{getOptionnalSentenceTail(feature)}}
+                </span>
+            </ng-container>
+
+            <span> with description below:</span>
+            
+            <mat-form-field class="mt16" appearance='fill'
+                validationMessageContainer>
+                <mat-label>Description</mat-label>
+                <textarea matInput
+                    rows="2"
+                    placeholder='Description'
+                    formControlName='description'></textarea>
+            </mat-form-field>
+        </span>
+
+        <ng-template #spinner>
+            <era-spinner></era-spinner>
+        </ng-template>
+
+        <era-add-footer [form]='form'
+            [disableCancel]="true"
+            [loading]='loading'
+            (onSave)="save()">
+        </era-add-footer>
+    </form>
+</mat-card>

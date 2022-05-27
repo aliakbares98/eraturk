@@ -1,0 +1,75 @@
+@import 'settings/settings.scss';
+
+.ngx-datatable {
+    box-shadow: none;
+    background-color: $background-first;
+    border-radius: $border-radius-sm;
+    border: 2px solid $border-color;
+
+    .datatable-header {
+
+        &-inner {
+            height: 100%;
+
+            .datatable-icon-sort-unset::before {
+                font-size: $font-size-base;
+                color: $text-color-main;
+                opacity: 1;
+            }
+        }
+
+        &-cell {
+            font-weight: 600;
+
+            &-label {
+                opacity: .6;
+            }
+
+            .header-sort-span {
+                opacity: .6;
+            }
+        }
+    }
+
+    .datatable-body {
+        &-row {
+            border-top: $border;
+            min-height: 64px;
+        }
+
+        .empty-row {
+            border-top: $border;
+            padding: 0 1.2rem;
+            line-height: 50px;
+        }
+
+        .datatable-scroll {
+            display: block;
+        }
+    }
+
+    .datatable-body-cell,
+    .datatable-header-cell {
+        display: flex !important;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .datatable-footer {
+        padding: 0 20px;
+        border-top: $border;
+
+        .page-count {
+            opacity: .6;
+        }
+    }
+
+    div,
+    p,
+    span {
+        &:not([class*='mat-']) {
+            color: $text-color-main;
+            font-size: $font-size-sm;
+        }
+    }
+}

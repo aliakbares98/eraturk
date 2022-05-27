@@ -1,0 +1,104 @@
+@import 'settings/settings.scss';
+@import 'tools/tools.scss';
+
+.messanger {
+    height: 100%;
+
+    .contacts {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        &_list {
+            overflow: hidden auto;
+
+            .contact {
+                $image-dimension: 54px;
+
+                &_image {
+                    flex: 0 0 #{$image-dimension};
+                    height: #{$image-dimension};
+                }
+
+                &_preview {
+                    width: calc(100% - (3 * #{$image-dimension}));
+
+                    &_name,
+                    &_last-message {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+
+    .messages {
+        position: relative;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        &_chats {
+            flex-grow: 1;
+            overflow: hidden auto;
+
+            .message-wrapper {
+                &--right {
+                    .message {
+                        border-top-right-radius: $border-radius-sm;
+                        border-top-left-radius: $border-radius-lg;
+                    }
+                }
+
+            }
+
+            .message {
+                border-top-left-radius: 5px;
+                word-break: break-word;
+                white-space: pre-wrap;
+
+                &_text {
+                    line-height: 1.3rem;
+                }
+            }
+        }
+
+        &_input {
+            >textarea {
+                border: none;
+                resize: none;
+                outline: none;
+
+                @include xs {
+                    height: 50px;
+                }
+            }
+        }
+
+        .no-contact-selected {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .mat-sidenav {
+        border-bottom-left-radius: $border-radius-lg;
+        border-bottom-right-radius: $border-radius-sm;
+    }
+}
+
+@include xs {
+    .messanger {
+        margin: 0 -16px;
+    }
+
+    .mat-drawer-container.mat-sidenav-container {
+        margin-top: 0 !important;
+    }
+
+    .mat-sidenav {
+        border-radius: 0;
+        width: 100vw;
+    }
+}

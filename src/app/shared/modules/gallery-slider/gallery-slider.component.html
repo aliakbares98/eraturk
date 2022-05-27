@@ -1,0 +1,48 @@
+<div class="gallery"
+    *ngIf="!loading; else loadingCard"
+    fxLayout="column"
+    fxLayoutAlign="space-between"
+    fxLayoutGap="16px">
+    <div class="view"
+        fxFlex>
+        <img class='image--selected'
+            [src]="selectedImage"
+            alt="">
+    </div>
+    <div class="thumbnails"
+        fxFlex='0 0 70px'
+        fxLayout="column"
+        fxLayoutAlign="center cneter">
+        <swiper [slidesPerView]="'auto'"
+            [spaceBetween]="10"
+            [lazy]="true"
+            #fromThisSupplierSwiper>
+            <ng-template swiperSlide
+                *ngFor="let item of [1,1,1,1,1,1,1,1]; let i = index">
+                <img class="swiper-lazy"
+                    (click)="onSelectImage(i+1)"
+                    width="70px"
+                    height="70px"
+                    data-src="{{'../../../../../assets/images/product-details-gallery/' + (i+1) + '.jpg'}}"
+                    alt="">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+            </ng-template>
+        </swiper>
+    </div>
+</div>
+
+<ng-template #loadingCard>
+    <div class="gallery--loading"
+        fxLayout="column">
+        <div class="shimmer-dark gallery--loading_image"
+            fxFlex></div>
+        <div class="gallery--loading_thumbnails"
+            fxFlex="0 0 102px"
+            fxLayout="row"
+            fxLayoutAlign='start center'
+            fxLayoutGap="8px">
+            <div class="shimmer-dark thumbnail"
+                *ngFor="let item of [0,0,0,0,0,0,0,0,0,0,0]"></div>
+        </div>
+    </div>
+</ng-template>

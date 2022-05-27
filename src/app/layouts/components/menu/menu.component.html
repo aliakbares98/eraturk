@@ -1,0 +1,97 @@
+<nav class="menu relative"
+    fxLayout="row"
+    fxLayoutAlign="start center">
+    <div class="menu_item--more pointer fs-sm relative contrary"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="8px">
+        <mat-icon (click)="showMoreMenu = true">menu</mat-icon>
+        <span (click)="showMoreMenu = true">more</span>
+    </div>
+
+    <!-- Search -->
+    <div class="menu_search bg-green"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+        [ngClass]="{'isSearching': isSearching}">
+        <input type="text"
+            placeholder="Search .."
+            #searchInput>
+        <button mat-icon-button
+            fxFlex="0 0 40px"
+            (click)="OnSearchClick($event)">
+            <mat-icon *ngIf="!isSearching">search</mat-icon>
+            <mat-icon *ngIf="isSearching">clear</mat-icon>
+        </button>
+    </div>
+
+    <!-- Menu Items -->
+    <ng-container *ngFor="let item of mainHeaderItems">
+        <button class="menu_item"
+            [routerLink]='item.link'
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}"
+            routerLinkActive="active-link"
+            mat-button>
+            <mat-icon class="navbar_item_icon mr8">{{item.icon}}</mat-icon>
+            {{item.textToken | translate}}
+        </button>
+    </ng-container>
+
+    <div fxFlex></div>
+
+    <!-- Login Button -->
+    <button class="btn register-button--before br-lg py8 px24 text-color-main fs-sm"
+        *ngIf="!userIsLoggedIn; else afterLogin">
+        <!-- <mat-icon class="mr4">person</mat-icon> -->
+        <span routerLink="/register">Register</span>
+        &nbsp; | &nbsp;
+        <span routerLink="/login">Sign In</span>
+    </button>
+    <ng-template #afterLogin>
+        <button class="btn register-button--after br-md py8 px24 text-color-main fs-sm"
+            [matMenuTriggerFor]="menu">
+            {{username}}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item
+                routerLink="/profile">
+                <mat-icon>person</mat-icon>
+                Profile
+            </button>
+            <button mat-menu-item
+                (click)="logout()">
+                <mat-icon>power_settings_new</mat-icon>
+                Logout
+            </button>
+        </mat-menu>
+    </ng-template>
+
+    <!-- More Menu -->
+    <div class="menu--more bg-white px16"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="8px"
+        *ngIf="showMoreMenu">
+        <ng-container *ngFor="let item of moreHeaderItems">
+            <button class="item text-color-contrary"
+                [routerLink]='item.link'
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{exact: true}"
+                routerLinkActive="active-link"
+                mat-button>
+                <mat-icon class="navbar_item_icon mr16">{{item.icon}}</mat-icon>
+                {{item.textToken | translate}}
+            </button>
+        </ng-container>
+
+        <div fxFlex></div>
+
+        <button mat-icon-button
+            color="warn"
+            (click)="showMoreMenu = false">
+            <mat-icon class="red">close</mat-icon>
+        </button>
+    </div>
+</nav>

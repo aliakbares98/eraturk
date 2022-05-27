@@ -1,0 +1,39 @@
+<div ngClass.xs="p32"
+  ngClass.gt-xs="py64">
+  <div class="wrapper ma contrary bg-white br-lg"
+    ngClass.xs="p32"
+    ngClass.gt-xs="p40">
+    <h3 class="fw-bold"
+      ngClass.xs="fs-2xl">
+      {{'ENTER_PHONE_OR_EMAIL' | translate}}
+    </h3>
+    <form [formGroup]="form"
+      fxLayout='column'
+      class="contrary">
+
+      <mat-form-field appearance='fill'
+        validationMessageContainer>
+        <mat-label>{{'PHONE_OR_EMAIL' | translate}}</mat-label>
+        <input type="text"
+          matInput
+          placeholder="Phone or Email"
+          formControlName='otpDestination'
+          required
+          #input
+          [ngModel]="input.value | lowercase"
+          (ngModelChange)="input.value=$event?.trim()"
+          class="always-ltr">
+      </mat-form-field>
+      <div class="pt20"
+        fxLayout='row'
+        fxLayoutAlign="space-between center">
+        <button class="btn btn-green btn-lg"
+          [disabled]="form.invalid || loading"
+          (click)="requestOtp()">{{'CONTINUE' | translate}}
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <a class="link fw-bold"
+          routerLink='/login'>{{'LOGIN' | translate}}</a>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,242 @@
+<!-- header -->
+<div class="top-banner"
+    fxLayoutAlign.xs="center">
+    <div class="container">
+        <div class="top-banner_content">
+            <h3>Eastern white cedar <span class="green">wood</span> </h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor
+                incididunt ut
+                labore et dolore
+                magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+                risus. Turpis massa
+                sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam. </p>
+            <div class="top-banner_content_actions pt32"
+                fxLayout.xs="column-reverse">
+                <button class="btn btn-lg btn-green br-lg btn_banner mr16 pointer">
+                    <strong class="text-color-contrary">Buy</strong> and <strong class="text-color-contrary">view
+                        contact</strong>
+                </button>
+                <span>
+                    <mat-icon class="mr8">local_offer</mat-icon>
+                    <span class="value--discounted">98.99 ₺</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container"
+    ngClass.xs="32px">
+    <ng-container *ngIf="1">
+        <!-- special_offer -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipSpecialOffer.swiperRef.slidePrev()'
+                (clickOnNext)='swipSpecialOffer.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipSpecialOffer>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-horizontal></era-product-card-horizontal>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- selling_pruducts -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipSelling.swiperRef.slidePrev()'
+                (clickOnNext)='swipSelling.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipSelling>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-vertical></era-product-card-vertical>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- category_name -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipCategoryName.swiperRef.slidePrev()'
+                (clickOnNext)='swipCategoryName.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipCategoryName>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-content></era-product-card-content>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- visited_products -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipVisited.swiperRef.slidePrev()'
+                (clickOnNext)='swipVisited.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipVisited>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-vertical></era-product-card-vertical>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- brands -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipBrand.swiperRef.slidePrev()'
+                (clickOnNext)='swipBrand.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipBrand
+                class="swiper--brand-card">
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-brand-card></era-brand-card>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- category_name-brand -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipCategory.swiperRef.slidePrev()'
+                (clickOnNext)='swipCategory.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipCategory>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-content></era-product-card-content>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- newest_products -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipNewest.swiperRef.slidePrev()'
+                (clickOnNext)='swipNewest.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipNewest>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-vertical></era-product-card-vertical>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- category_name -->
+        <div class="section">
+            <era-swiper-header class="my24"
+                title='The best selling offer'
+                moreLink='/products'
+                (clickOnPrev)='swipCategoryLast.swiperRef.slidePrev()'
+                (clickOnNext)='swipCategoryLast.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #swipCategoryLast>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-content></era-product-card-content>
+                </ng-template>
+            </swiper>
+        </div>
+    </ng-container>
+    <!-- Introduction -->
+    <div class="intro"
+        fxLayout="row wrap"
+        fxLayoutAlign="start center"
+        fxFlexOrder.xs="2"
+        fxLayout.xs="column"
+        fxLayoutGap.xs="16px">
+        <div class="intro_text"
+            fxFlex.gt-xs="0 0 172px"
+            fxLayout.xs="column"
+            fxLayoutAlign.xs="start none"
+            fxFlexOrder.xs="1">
+            <img class="logo-up-footer pt32"
+                fxHide.xs
+                ngClass.xs="br-lg"
+                src="../../../../../assets/images/home/logoUp.png"
+                alt="">
+            <img class="logo-up-footer mt32"
+                width="315px"
+                height="155px"
+                fxHide.gt-xs
+                ngClass.xs="br-lg"
+                src="../../../../../assets/images/home/logoup-55.png"
+                alt="">
+        </div>
+        <p class="intro-content_text fx-sm"
+            fxFlex
+            fxFlexOrder.xs="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod
+            tempor
+            incididunt ut
+            labore et dolore
+            magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+            risus. Turpis massa
+            sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+        </p>
+        <div class="intro_thumbnails"
+            fxFlex="0 0 295px"
+            fxHide.xs>
+            <img class="top-left"
+                width="124px"
+                height="124px"
+                src="../../../../../assets/images/home/intro-image-1.png">
+            <img class="right"
+                width="156px"
+                height="156px"
+                src="../../../../../assets/images/home/intro-image-2.png">
+            <img class="bottom-left"
+                width="93px"
+                height="93px"
+                src="../../../../../assets/images/home/intro-image-3.png">
+        </div>
+        <div ngClass.gt-xs="intro_buttons pl80"
+            fxFlex="0 1 100%"
+            fxFlexAlign="start"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="16px"
+            ngClass.xs="pt"
+            fxFlexOrder.xs="2">
+            <button class="btn-about-us white"
+                routerLink='/about-us'
+                mat-stroked-button
+                fxHide.xs>
+                {{'PAGE.HOME.INTRO.BUTTON1'|translate}}
+            </button>
+            <button class="btn-know-more py8 px16"
+                ngClass.gt-xs="ml8"
+                routerLink='/about-us'
+                mat-stroked-button>
+                <span> {{'PAGE.HOME.INTRO.BUTTON2'|translate}}</span>
+            </button>
+            <p class="white">
+                <img src="../assets/images/home/lastLogo.png"
+                    class="middle">
+                (+90) 5500 001330
+            </p>
+        </div>
+    </div>
+</div>

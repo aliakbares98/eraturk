@@ -1,0 +1,16 @@
+@import 'settings/settings.scss';
+
+textarea {
+    resize: vertical !important;
+}
+
+
+::ng-deep {
+    .sentence-part {
+        display: inline-block;
+
+        .validation-message {
+            display: inline-block;
+        }
+    }
+}

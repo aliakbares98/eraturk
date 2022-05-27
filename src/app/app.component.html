@@ -1,0 +1,13 @@
+<!-- ProgressBar -->
+<ng-progress #progressBar
+    id="main-progressbar">
+</ng-progress>
+
+<div class="main-container"
+    [dir]="direction"
+    [ngClass]="{'dark': darkTheme}">
+    <router-outlet></router-outlet>
+    
+    <!-- Notifications -->
+    <ng-snotify [style]="'material'"></ng-snotify>
+</div>

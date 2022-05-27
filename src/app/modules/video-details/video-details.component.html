@@ -1,0 +1,127 @@
+<div class="page">
+    <div class="container">
+
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs"></div>
+
+        <!-- Top -->
+        <div class="top mb24"
+            fxLayout="row"
+            fxLayoutGap="30px"
+            fxLayout.xs="column"
+            fxLayoutAlign="start">
+
+            <!-- Product Detailed Info -- For mobile -->
+            <div fxHide.gt-xs>
+                <ng-container *ngTemplateOutlet="mainDetails"></ng-container>
+            </div>
+
+            <!-- Video -->
+            <div class="video bg-second br-lg"
+                fxFlex="0 0 600px"
+                fxFlex.xs="0 0 350px"
+                ngClass.xs="slider--mobile"></div>
+
+            <!-- Details -->
+            <div>
+                <div fxHide.xs>
+                    <ng-container *ngTemplateOutlet="mainDetails"></ng-container>
+                </div>
+
+                <ng-template #mainDetails>
+                    <h3>Your gallery image title</h3>
+                    <div class="fs-sm">
+                        <mat-icon class="white">visibility</mat-icon>
+                        <span class="pl4">12.23</span>
+                        <mat-icon class="ml32 white">access_time</mat-icon>
+                        <span class="pl4">2021/01/01 - 22:30</span>
+                    </div>
+                    <mat-divider class="my24"
+                        fxHide.xs></mat-divider>
+                </ng-template>
+
+                <h3>description: </h3>
+                <p class="fs-base fw-normal justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed
+                    do
+                    eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+                    risus.
+                    Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et
+                    dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+                    risus.
+                    Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et
+                    dolore magna aliqua. Vestibulum sed arcu non odio euismod. Diam phasellus vestibulum lorem sed
+                    risus.
+                    Turpis massa sed elementum tempus egestas sed. Auctor urna nunc id cursus metus aliquam. </p>
+                <mat-divider class="my24"></mat-divider>
+                <!-- btn_linke ... -->
+                <div class="image-detail_btn"
+                    fxLayout="row">
+                    <button class="btn btn-lg bg-red white"
+                        mat-stroked-button>
+                        <mat-icon>favorite</mat-icon><span class="pl8">Like</span>
+                        <span class="pl8 op6">210 likes</span>
+                    </button>
+                    <button class="btn btn-dark btn-lg fw-light ml12"
+                        mat-stroked-button>
+                        <mat-icon>bookmark_border</mat-icon><span class="pl8">Save</span>
+                    </button>
+                    <button class="btn btn-dark btn-lg ml12"
+                        mat-stroked-button>
+                        <mat-icon>share</mat-icon><span class="pl8">Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comments -->
+        <h3 class="">Commnets
+            <span class="fs-sm green fw-normal pl12">3 comment</span>
+        </h3>
+
+        <era-comments></era-comments>
+
+        <!-- Related Videos -->
+        <ng-container>
+            <era-swiper-header class="py24"
+                [title]='"Know more media"'
+                [moreLink]="'/'"
+                (clickOnPrev)='relatedMediaSwiper.swiperRef.slidePrev()'
+                (clickOnNext)='relatedMediaSwiper.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #relatedMediaSwiper>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-content></era-product-card-content>
+                </ng-template>
+            </swiper>
+        </ng-container>
+
+        <!-- Product in this field -->
+        <ng-container>
+            <era-swiper-header class="py24"
+                [title]='"Related Products"'
+                [moreLink]="'/'"
+                (clickOnPrev)='relatedProductsSwiper.swiperRef.slidePrev()'
+                (clickOnNext)='relatedProductsSwiper.swiperRef.slideNext()'></era-swiper-header>
+            <swiper [slidesPerView]="'auto'"
+                [spaceBetween]="10"
+                #relatedProductsSwiper>
+                <ng-template swiperSlide
+                    *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                    <era-product-card-vertical></era-product-card-vertical>
+                </ng-template>
+            </swiper>
+        </ng-container>
+
+    </div>
+</div>

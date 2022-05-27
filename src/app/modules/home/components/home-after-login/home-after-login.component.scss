@@ -1,0 +1,168 @@
+@import "settings/settings.scss";
+
+// banner
+.top-banner {
+  height: 673px;
+  background-image: url("../../../../../assets/images/home/home-top-banner.png");
+  background-size: cover;
+  background-size: cover;
+  background-position: bottom;
+
+  &_content {
+    top: 221px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 299px;
+    width: 608px;
+
+    &_title {
+      color: $text-color-main;
+      font-size: 36px;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    &_text {
+      color: $text-color-main;
+      font-size: 12px;
+      margin-top: 16px;
+      line-height: 1.2rem;
+    }
+
+    &_actions {
+      margin-top: 35px;
+
+      .mat-stroked-button {
+        background: $green;
+        border-radius: 77px;
+        color: $text-color-green;
+
+        span {
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 14px;
+          color: $text-color-green;
+        }
+      }
+
+      mat-icon {
+        color: $text-color-main;
+        font-size: 18px;
+        line-height: 21px;
+        margin-left: 16px;
+      }
+
+      .value--discounted {
+        color: $text-color-main;
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+// Introduction
+.intro {
+  padding: 50px 0 120px;
+
+  &_text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    p {
+      color: $text-color-main;
+      font-size: 14px;
+      line-height: 1.2rem;
+    }
+  }
+
+  &_thumbnails {
+    flex: 0 0 295px;
+    height: 230px;
+    margin-left: 32px;
+    position: relative;
+
+    img {
+      position: absolute;
+    }
+
+    .top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .right {
+      top: 40px;
+      right: 0;
+    }
+
+    .bottom-left {
+      left: 30px;
+      bottom: 0;
+    }
+  }
+
+  .btn-about-us {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 20px;
+    width: 209px;
+    height: 48px;
+    border-radius: 15px;
+    background-color: black;
+
+    span {
+      font-weight: 300;
+      color: $green;
+      font-size: 18px;
+    }
+  }
+
+  .btn-know-more {
+    margin-left: 10px;
+    width: 118px;
+    height: 48px;
+    border: 1px solid $green;
+    box-sizing: border-box;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 300;
+    color: $green;
+  }
+
+  &_buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: -55px;
+    padding-left: 85px;
+
+    img {
+      width: 24px;
+      height: 21px;
+      vertical-align: middle;
+    }
+  }
+}
+
+/*
+mediaquery
+*/
+@media screen and(max-width:576px) {
+  .top-banner_content_title {
+    font-size: 25px;
+  }
+  swiper {
+    padding-top: 40px;
+  }
+  .mat-button-wrapper .mat-icon.text-color-main .material-icons .mat-icon-no-color {
+    display: none;
+  }
+  .section{
+    padding-left: 30px;
+  }
+}

@@ -1,0 +1,17 @@
+<div class="card"
+    *ngIf="!productBrand?.id; else loadingCard">
+    <div class="card_core fadeIn">
+        <!-- <img [src]="'data:image/jpeg;base64, '+ productBrand?.logoDocument?.fileContent"
+            [alt]="productBrand?.name + '-brand-image'"> -->
+        <img src="../../../../../../assets/images/custom-cards/brand.png"
+            alt="">
+    </div>
+    <p class="card_title">{{productBrand?.name}}</p>
+</div>
+
+<ng-template #loadingCard>
+    <div class="card--loading">
+        <div class="shimmer-dark card--loading_core"></div>
+        <div class="shimmer-dark card--loading_title"></div>
+    </div>
+</ng-template>

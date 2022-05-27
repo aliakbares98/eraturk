@@ -1,0 +1,86 @@
+@import 'settings/settings.scss';
+
+$card-width: 303px;
+$card-height: 165px;
+$image-dimension : 52px;
+
+.card {
+    width: $card-width;
+
+    &_title {
+        max-width: 166px;
+
+        &_off {
+            height: 38px;
+            min-width: 20px;
+            line-height: 38px;
+
+            .ear {
+                width: 19px;
+                height: 10px;
+                position: absolute;
+                top: 0px;
+                right: -8px;
+                line-height: 0;
+
+                &::after {
+                    content: "";
+                    background-color: white;
+                    width: 17px;
+                    height: 17px;
+                    display: inline-block;
+                    border-radius: 40%;
+                    margin-right: -9px;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        &_text {
+            font-size: 14px;
+        }
+    }
+
+    &_price {
+        >mat-icon {
+            transform: rotate(90deg);
+        }
+    }
+
+    &_store {
+        box-shadow: 0px 2px 6px #D6D8DB;
+    }
+
+    &_image {
+        width: $image-dimension;
+        height: $image-dimension;
+        border: 1px solid #BAA895;
+        position: absolute;
+        right: 30px;
+        top: ($card-height -$image-dimension) / 2;
+    }
+}
+
+.card--loading {
+    width: $card-width;
+
+    &_title {
+        width: 170px;
+    }
+
+    &_price {
+        width: 140px;
+    }
+
+    &_store {
+        width: 105px;
+    }
+
+    &_image {
+        width: $image-dimension;
+        height: $image-dimension;
+        position: absolute;
+        right: 30px;
+        top: ($card-height -$image-dimension) / 2;
+    }
+}

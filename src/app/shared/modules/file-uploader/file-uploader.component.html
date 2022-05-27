@@ -1,0 +1,140 @@
+<div class="container uploader">
+    <div class="row">
+        <div *ngIf="config?.multiple">
+            <input type="file"
+                class="custom-file-input"
+                id="multiple-uploader"
+                ng2FileSelect
+                [uploader]="uploader"
+                multiple
+                *ngIf="config?.multiple" />
+            <label for="multiple-uploader">
+                <mat-icon class="mat-icon-lg">cloud_upload</mat-icon>
+                <p>Click to Choose files</p>
+            </label>
+        </div>
+
+            <div *ngIf="!config?.multiple">
+                <input type="file" #singleInput
+                    class="custom-file-input"
+                    id="single-uploader"
+                    ng2FileSelect
+                    [uploader]="uploader" />
+                <label for="single-uploader">
+                    <mat-icon class="mat-icon-lg">cloud_upload</mat-icon>
+                    <p>Click to Choose file</p>
+                </label>
+            </div>
+
+        <div class="mt16">
+            <table class="table text-color-main"
+                *ngIf="uploader?.queue?.length">
+                <thead>
+                    <tr>
+                        <th width="50%">Name</th>
+                        <th>Size</th>
+                        <th>Progress</th>
+                        <!-- <th>Status</th> -->
+                        <th *ngIf="config?.enableActions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of uploader.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td *ngIf="uploader.options.isHTML5"
+                            nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                        <td *ngIf="uploader.options.isHTML5">
+                            <div class="progress"
+                                style="margin-bottom: 0;">
+                                <mat-progress-bar mode="determinate"
+                                    [value]="item.progress"></mat-progress-bar>
+                            </div>
+                        </td>
+                        <!-- <td class="text-center">
+                                <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                            </td> -->
+                        <td nowrap
+                            *ngIf="config?.enableActions">
+                            <button type="button"
+                                class="btn btn-success btn-xs"
+                                (click)="item.upload()"
+                                [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> Upload
+                            </button>
+                            <button type="button"
+                                class="btn btn-warning btn-xs"
+                                (click)="item.cancel()"
+                                [disabled]="!item.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                            </button>
+                            <button type="button"
+                                class="btn btn-danger btn-xs"
+                                (click)="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> Remove
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table text-color-main"
+                *ngIf="config?.files?.length">
+                <thead>
+                    <tr>
+                        <th width="50%">Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of config?.files; let i = index">
+                        <td><strong>{{item.fileName}}</strong></td>
+                        <td>
+                            <button *ngIf="config.downloadable"
+                                mat-icon-button
+                                color='primary'
+                                (click)="downloadFile(item)">
+                                <mat-icon>file_download</mat-icon>
+                            </button>
+
+                            <button mat-icon-button
+                                (click)="removeFile(i)"
+                                color='warn'>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="config?.enableActions">
+                <div>
+                    Queue progress:
+                    <div class="progress">
+                        <div class="progress-bar"
+                            role="progressbar"
+                            [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+                <button type="button"
+                    class="btn btn-success btn-s"
+                    (click)="uploader.uploadAll()"
+                    [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                </button>
+                <button type="button"
+                    class="btn btn-warning btn-s"
+                    (click)="uploader.cancelAll()"
+                    [disabled]="!uploader.isUploading">
+                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                </button>
+                <button type="button"
+                    class="btn btn-danger btn-s"
+                    (click)="uploader.clearQueue()"
+                    [disabled]="!uploader.queue.length">
+                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

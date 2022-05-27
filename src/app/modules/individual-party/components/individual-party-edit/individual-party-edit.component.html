@@ -1,0 +1,291 @@
+<div class="bg-second br-lg"
+    ngClass.gt-xs="p32"
+    ngClass.xs="p16">
+    <h4>{{title}}</h4>
+    <form [formGroup]="form">
+        <div fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutAlign="space-between"
+            fxLayoutGap='8px'>
+
+            <div class="bg-third br-lg"
+                ngClass.gt-xs="p32"
+                ngClass.xs="p16"
+                fxFlex
+                fxLayout="column"
+                fxLayoutGap="4px">
+                <h4 class="mb12">{{'BASE_INFO'|translate}}</h4>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'FIRST_NAME'|translate}}</mat-label>
+                    <input matInput
+                        placeholder="{{'FIRST_NAME'|translate}}"
+                        formControlName='firstName'
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'LAST_NAME'|translate}}</mat-label>
+                    <input matInput
+                        placeholder="{{'LAST_NAME'|translate}}"
+                        formControlName='lastName'
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'GENDER'|translate}}</mat-label>
+                    <mat-select required
+                        formControlName='gender'>
+                        <mat-option *ngFor="let gender of genders"
+                            [value]="gender">
+                            {{gender}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'BIRTH_DATE'|translate}}</mat-label>
+                    <input matInput
+                        placeholder="{{'BIRTH_DATE'|translate}}"
+                        formControlName='birthDate'
+                        required
+                        [matDatepicker]="picker"
+                        [disabled]='true'>
+                    <mat-datepicker-toggle matSuffix
+                        [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker
+                        [disabled]='false'></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="example-full-width"
+                    appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'NATIONALITY'|translate}}</mat-label>
+                    <input type="text"
+                        placeholder="{{'NATIONALITY'|translate}}"
+                        aria-label="Number"
+                        matInput
+                        formControlName="nationalityInput"
+                        [matAutocomplete]="auto"
+                        required>
+                    <mat-autocomplete #auto="matAutocomplete"
+                        [displayWith]="displayFnNationality">
+                        <mat-option *ngFor="let nationality of nationlitiesOptions | async"
+                            [value]="nationality">
+                            <span [class]="'flag ' + 'flag-' + nationality.code"></span>&nbsp;&nbsp;{{nationality.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+
+            <div class="bg-third br-lg"
+                ngClass.gt-xs="p32"
+                ngClass.xs="p16"
+                fxFlex>
+                <!-- Contacts -->
+                <h4 fxLayout="row"
+                    fxLayoutAlign="space-between center">
+                    {{'CONTACTS'|translate}}
+                    <button mat-mini-fab
+                        color="primary"
+                        aria-label="Add Feature Category"
+                        (click)="addContactForm()"
+                        [disabled]="contacts.length > 0 && form.controls.contacts.invalid">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </h4>
+                <ng-container formArrayName="contacts"
+                    *ngFor="let contact of contacts; let i = index">
+                    <mat-divider class="mt8 mb8"
+                        *ngIf="i > 0"></mat-divider>
+                    <div [formGroupName]="i">
+                        <div fxLayout="row"
+                            fxLayoutAlign="space-between"
+                            fxLayoutGap="8px">
+
+                            <div fxFlex="45"
+                                fxLayout="column"
+                                fxLayoutGap="4px">
+                                <mat-form-field appearance='fill'
+                                    validationMessageContainer>
+                                    <mat-label>{{'TYPE'|translate}}</mat-label>
+                                    <mat-select formControlName="type"
+                                        (selectionChange)="addValuePartOfContactForm($event, i)"
+                                        required
+                                        #contactType>
+                                        <mat-option *ngFor='let item of contactInfoTypeList'
+                                            [value]='item.value'>
+                                            {{item.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <div *ngIf='getContactFormByIndex(i).controls.value'>
+                                    <div *ngIf="contactType.value === contactInfoType.socialId"
+                                        fxLayout="column"
+                                        fxLayoutGap="4px"
+                                        [formGroupName]="'value'">
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>Social Media</mat-label>
+                                            <mat-select formControlName="code">
+                                                <mat-option *ngFor='let item of socialsList'
+                                                    [value]='item.value'>
+                                                    {{item.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>Social ID</mat-label>
+                                            <input matInput
+                                                placeholder='Social Id'
+                                                formControlName='id'
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div *ngIf="contactType.value === contactInfoType.physicalAddress"
+                                        fxLayout="column"
+                                        fxLayoutGap="4px"
+                                        [formGroupName]="'value'">
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>Title</mat-label>
+                                            <input matInput
+                                                placeholder='Title'
+                                                formControlName='title'
+                                                required>
+                                        </mat-form-field>
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>Line 1</mat-label>
+                                            <input matInput
+                                                placeholder='Line 1'
+                                                formControlName='line1'
+                                                required>
+                                        </mat-form-field>
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>Line 2</mat-label>
+                                            <input matInput
+                                                placeholder='Line 2'
+                                                formControlName='line2'
+                                                required>
+                                        </mat-form-field>
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>Postal Code</mat-label>
+                                            <input matInput
+                                                placeholder='Postal Code'
+                                                formControlName='postalCode'
+                                                required>
+                                        </mat-form-field>
+                                        <mat-form-field class="example-full-width"
+                                            appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>City</mat-label>
+                                            <input type="text"
+                                                placeholder="Choose City"
+                                                aria-label="Number"
+                                                matInput
+                                                formControlName="cityInput"
+                                                [matAutocomplete]="auto"
+                                                required>
+                                            <mat-autocomplete #auto="matAutocomplete"
+                                                [displayWith]="displayFnCity">
+                                                <mat-option *ngFor="let city of citiesOptions[i] | async"
+                                                    [value]="city">
+                                                    <span [class]="'flag ' + 'flag-' + city.code"></span>
+                                                    &nbsp;&nbsp;
+                                                    {{city.name}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div *ngIf="contactType.value === contactInfoType.email"
+                                        fxFlayout="column"
+                                        fxLayoutGap="4px">
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>{{contactType.value}}</mat-label>
+                                            <input matInput
+                                                [placeholder]='contactType.value'
+                                                formControlName='value'
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div *ngIf="contactType.value === contactInfoType.cellphone"
+                                        fxLayout="column"
+                                        fxLayoutGap="4px">
+                                        <mat-form-field validationMessageContainer
+                                            class="input--cellphone">
+                                            <ngx-mat-intl-tel-input [preferredCountries]="['tr']"
+                                                [enablePlaceholder]="true"
+                                                [enableSearch]="true"
+                                                name="cellPhone"
+                                                formControlName="value">
+                                            </ngx-mat-intl-tel-input>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div *ngIf="contactType.value === contactInfoType.phone">
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>{{contactType.value}}</mat-label>
+                                            <input matInput
+                                                [placeholder]='contactType.value'
+                                                formControlName='value'
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div *ngIf="contactType.value === contactInfoType.website">
+                                        <mat-form-field appearance='fill'
+                                            validationMessageContainer>
+                                            <mat-label>{{contactType.value}}</mat-label>
+                                            <input matInput
+                                                [placeholder]='contactType.value'
+                                                formControlName='value'
+                                                required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <!-- Confirmation Code -->
+                                <ng-container
+                                    *ngIf="contactType.value === contactInfoType.cellphone || contactType.value ===contactInfoType.email ">
+                                    <era-confirmation-code [form]="contact"></era-confirmation-code>
+                                </ng-container>
+                            </div>
+                            <div fxFlex>
+                                <!-- Description -->
+                                <mat-form-field appearance='fill'
+                                    validationMessageContainer>
+                                    <mat-label>{{'DESCRIPTOIN'|translate}}</mat-label>
+                                    <textarea matInput
+                                        rows="3"
+                                        placeholder="{{'DESCRIPTOIN'|translate}}"
+                                        formControlName='description'></textarea>
+                                </mat-form-field>
+                            </div>
+                            <button mat-mini-fab
+                                class="mt16"
+                                color='warn'
+                                (click)='removeContact(i)'>
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+
+        <era-add-footer [form]='form'
+            [loading]='loading'
+            (onCancel)="closeDialog()"
+            (onSave)="save()">
+        </era-add-footer>
+    </form>
+</div>

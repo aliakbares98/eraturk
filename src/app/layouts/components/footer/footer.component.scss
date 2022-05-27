@@ -1,0 +1,36 @@
+@import "settings/settings.scss";
+
+.footer {
+  &_column {
+    p,
+    li,
+    a {
+      font-size: 14px;
+      line-height: 25px;
+    }
+
+    > ul {
+      > li {
+        > a {
+          transition: $transition;
+          &:hover {
+            color: $green;
+          }
+        }
+      }
+    }
+
+    &--newsletters {
+      .input--newsletters {
+        height: 42px;
+        max-width: 300px;
+        border: 1px solid $border-color;
+
+        > input {
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

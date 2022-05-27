@@ -1,0 +1,169 @@
+<div class="messanger">
+    <mat-sidenav-container class="height-100"
+        [style.marginTop.px]="mobileQuery.matches ? 16 : 0">
+        <mat-sidenav #snav
+            opened
+            [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56"
+            fxFlex="0 0 350px"
+            fxFlex.xs="0 0 100vw">
+            <!-- Contacts -->
+            <div class="contacts bg-second overflow-hidden height-100"
+                ngClass.gt-xs="br-lg"
+                fxLayout="column">
+                <div class="contacts_top pt16 pr16 pb12 pl16">
+                    <mat-form-field appearance='fill'
+                        validationMessageContainer>
+                        <mat-label>{{'SEARCH_CONTACTS'|translate}}</mat-label>
+                        <input matInput
+                            #searchInput>
+                        <mat-icon matSuffix
+                            class="pointer"
+                            *ngIf="!searchInput.value.length">search</mat-icon>
+                        <mat-icon matSuffix
+                            class="pointer"
+                            (click)="searchInput.value = ''"
+                            *ngIf="searchInput.value.length">clear</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="contacts_list px16 pb16"
+                    fxFlex
+                    fxLayout="column"
+                    fxLayoutGap="8px">
+                    <div class="contact bg-third br-md p8 pointer overflow-hidden"
+                        fxFlex="0 0 60px"
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        fxLayoutGap="8px"
+                        *ngFor="let i of ('---------------------').split('')">
+                        <img src="../../../assets/images/decorator/user.png"
+                            alt="user-image"
+                            width="40px"
+                            height="40px"
+                            class="br-round">
+                        <div class="contact_preview"
+                            fxFlex>
+                            <p class="contact_preview_name fw-medium">Cotact Name</p>
+                            <p class="contact_preview_last-message op6 fs-sm">Last message, contact has sent dasdasdasd
+                                fadsfdas
+                                dasa
+                                dasdasd.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-sidenav>
+
+        <mat-sidenav-content fxFlex
+            ngClass.gt-xs="pl4">
+            <!-- Messages -->
+            <div class="messages bg-second overflow-hidden height-100"
+                ngClass.gt-xs="br-lg"
+                fxLayout="column">
+                <div class="back-to-contacts-list bg-third px16"
+                    fxHide.gt-xs>
+                    <button mat-icon-button
+                    (click)="snav.close()">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <span class="ml8">Alireza Ghasemi</span>
+                </div>
+                <!-- Chats -->
+                <div class="messages_chats"
+                    ngClass.gt-xs="px28 py28"
+                    ngClass.xs="p12"
+                    fxFlex
+                    #chats>
+                    <ng-container *ngIf="1">
+                        <div class="message-wrapper py8"
+                            fxLayout="row"
+                            fxLayoutAlign="start start"
+                            fxLayoutGap="8px"
+                            *ngFor="let i of ('                             ').split('')">
+                            <img src="../../../assets/images/decorator/user.png"
+                                width="50px"
+                                height="50px"
+                                class="br-round"
+                                alt="">
+                            <!-- Message -->
+                            <div class="message p20 br-lg bg-forth relative"
+                                fxFlex>
+                                <div class="message_info fs-xs pb8"
+                                    fxLayout="row"
+                                    fxLayoutAlign="space-between center">
+                                    <p class="op6">Alireza Ghasemi</p>
+                                    <span class="op6">
+                                        <mat-icon class="mat-icon-xs">schedule</mat-icon>
+                                        2021/01/01 - 22:30
+                                    </span>
+                                </div>
+                                <div class="message_text fs-sm">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua. Vestibulum sed arcu non odio euismod.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message-wrapper message-wrapper--right"
+                            fxLayout='row-reverse'
+                            fxLayoutAlign="start start"
+                            fxLayoutGap="8px">
+                            <img src="../../../assets/images/decorator/user.png"
+                                width="50px"
+                                height="50px"
+                                class="br-round"
+                                alt="">
+                            <!-- Message -->
+                            <div class="message p20 br-lg bg-focused relative"
+                                fxFlex>
+                                <div class="message_info fs-xs pb8"
+                                    fxLayout="row"
+                                    fxLayoutAlign="space-between center">
+                                    <p class="op6">Alireza Ghasemi</p>
+                                    <span class="op6">
+                                        <mat-icon class="mat-icon-xs">schedule</mat-icon>
+                                        2021/01/01 - 22:30
+                                    </span>
+                                </div>
+                                <div class="message_text fs-sm">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua. Vestibulum sed arcu non odio euismod.
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <!-- Chat Input -->
+                <div class="messages_input bg-third"
+                    ngClass.gt-xs="py12 px28"
+                    ngClass.xs="p16"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="8px">
+                    <textarea placeholder="Write your message .."
+                        fxFlex
+                        class="bg-forth br-lg text-color-main p16"></textarea>
+                    <button class="btn btn-lg btn-green pointer"
+                        fxHide.xs>
+                        Send
+                        <mat-icon class="ml16">send</mat-icon>
+                    </button>
+                    <button mat-icon-button
+                        fxHide.gt-xs>
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </div>
+                <!-- Start a chat -->
+                <div class="no-contact-selected bg-third width-100 height-100"
+                    fxLayout="column"
+                    fxLayoutAlign="center center"
+                    fxHide.xs>
+                    <h3>Start a chat !!</h3>
+                    <h5 class="op6">No Contact Selected</h5>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

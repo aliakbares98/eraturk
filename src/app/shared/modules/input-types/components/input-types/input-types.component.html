@@ -1,0 +1,96 @@
+<span *ngIf="!config.style else materialInput"
+    [formGroup]="config.formGroup" 
+    >
+
+    <span validationMessageContainer
+        *ngIf="!constraintValues.length || customOptionIsSelected">
+        <!-- String -->
+        <input class="product-custom-input"
+            *ngIf="determineVisibility(featureTypeEnum.String)"
+            type="text"
+            [placeholder]='config.placeHolder'
+            [formControlName]='config.controlName'
+            [required]="config.required">
+
+        <!-- Number -->
+        <input class="product-custom-input"
+            *ngIf="determineVisibility(featureTypeEnum.Numeric)"
+            type="number"
+            [placeholder]='config.placeHolder'
+            [formControlName]='config.controlName'
+            [required]="config.required">
+
+        <!-- Boolean -->
+        <mat-checkbox *ngIf="determineVisibility(featureTypeEnum.Boolean)"
+            color="primary"
+            [formControlName]='config.controlName'>
+        </mat-checkbox>
+
+        <!-- DateTime -->
+        <input *ngIf="determineVisibility(featureTypeEnum.DateTime)"
+            type="date"
+            class="product-custom-input"
+            [formControlName]='config.controlName'
+            [required]="config.required">
+
+        <!-- Range -->
+        <span class="range-inputs-wrapper"
+            *ngIf="determineVisibility(featureTypeEnum.Range)">
+            <input class="product-custom-input"
+                type="number"
+                placeholder='From'
+                formControlName='from'
+                [required]="config.required">
+            <input class="product-custom-input"
+                type="number"
+                placeholder='To'
+                formControlName='to'
+                [required]="config.required">
+            <input class="product-custom-input"
+                type="text"
+                placeholder='UOM'
+                formControlName='uom'
+                [required]="config.required">
+        </span>
+
+        <!-- Quatity -->
+        <input class="product-custom-input"
+            *ngIf="determineVisibility(featureTypeEnum.Quantity)"
+            type="text"
+            [placeholder]='config.placeHolder'
+            [formControlName]='config.controlName'
+            [required]="config.required">
+
+    </span>
+
+    <span *ngIf="constraintValues.length">
+        <!-- Constraints - ValidOptions -->
+        <select *ngIf="config.featureType !== featureTypes.range; else rangeSelect"
+            (change)="onChangeValidOptionsConstraints($event.target)"
+            [required]="config.required"
+            class="product-custom-input product-custom-input--select options">
+            <option *ngFor="let item of constraintValues; let i = index"
+                [ngValue]="item">{{item}}</option>
+            <option [ngValue]='"customOption"'
+                *ngIf="customOptionIsAllowed">Others</option>
+        </select>
+
+        <!-- Constraints - ValidRages -->
+        <ng-template #rangeSelect>
+            <select (change)="onChangeRangeConstraints($event.target)"
+                [required]="config.required"
+                [value]="null"
+                class="product-custom-input product-custom-input--select">
+                <option *ngFor="let item of constraintValues"
+                    [ngValue]="item">{{item.from}} to {{item.to}} - {{item.uom}}</option>
+                <option [ngValue]='"customOption"'
+                    *ngIf="customOptionIsAllowed">Others</option>
+            </select>
+        </ng-template>
+    </span>
+</span>
+
+<ng-template #materialInput>
+    <era-input-types-material [config]="config"> 
+    </era-input-types-material>
+</ng-template>

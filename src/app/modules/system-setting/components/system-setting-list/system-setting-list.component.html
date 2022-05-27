@@ -1,0 +1,49 @@
+<era-list-toolbar (onAdd)='openAdd()'
+    title="System Setting"
+    [addAction]='permissions.AllowedTemporarily'></era-list-toolbar>
+    
+<ngx-datatable class="mt16"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="datatableInputs.columnMode"
+    [rowHeight]="datatableInputs.rowHeight"
+    [scrollbarH]='true'
+    [loadingIndicator]="datatableInputs.loading"
+    [headerHeight]="datatableInputs.headerHeight"
+    [footerHeight]="datatableInputs.footerHeight"
+    [reorderable]="datatableInputs.reorderable"
+    [externalPaging]="datatableInputs.externalPaging"
+    [count]="datatableInputs.count"
+    [offset]="datatableInputs.offset"
+    [limit]="datatableInputs.limit"
+    (page)="setPage($event)"
+    (sort)="sort($event)">
+>
+</ngx-datatable>
+
+<ng-template #actions
+    let-row="row"
+    let-value="value"
+    let-button="column.actions"
+    let-rowIndex="rowIndex">
+    <era-actions (onEdit)="openEdit(row)"
+        [disableDelete]="false"
+        (onRemove)="remove(row.id)"
+        [updateAction]="permissions.AllowedTemporarily"
+        [deleteAction]="permissions.AllowedTemporarily">
+    </era-actions>
+</ng-template>
+<ng-template #filterable
+    let-column="column"
+    let-sort="sortFn">
+    <span class="header-sort-span"
+        (click)="sort()">
+        {{column.name}}
+    </span>
+    <span class="header-filter-span">
+        <button mat-icon-button
+            (click)="addFilter(column)">
+            <mat-icon>filter_list</mat-icon>
+        </button>
+    </span>
+</ng-template>

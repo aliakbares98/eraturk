@@ -1,0 +1,16 @@
+@import "settings/settings.scss";
+
+.mat-expansion-panel {
+  border-radius: 25px !important;
+  background-color: $background-second;
+
+  &.mat-expanded {
+    .mat-expansion-panel-header-title {
+      color: $green;
+    }
+  }
+}
+
+mat-expansion-panel-header {
+  min-height: 75px;
+}

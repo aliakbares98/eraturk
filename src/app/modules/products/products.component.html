@@ -1,0 +1,128 @@
+<div class="page page--products">
+    <div class="container">
+        <div class="breadcrumbs"></div>
+        <div class="content"
+            fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutGap="32px"
+            fxLayoutAlign="start start">
+            <!-- Filters -->
+            <div class="filters p16"
+                fxFlex="0 0 300px"
+                fxFlex.xs="0 0 100%"
+                fxLayout.xs="column"
+                fxHide.xs>
+                <div class="title pb16 pt8 mb24 border-bottom">{{'CATEGORY'|translate}}</div>
+                <div class="list--categories"
+                    fxLayout="column"
+                    fxLayoutGap="8px">
+                    <div class="item"
+                        fxLayout="row"
+                        fxLayoutAlign='center center'
+                        *ngFor="let item of [1,1,1,1,1,1,1,1]"
+                        (click)="categorySelected()">
+                        <p class="text"
+                            fxFlex>{{'THE_CATEGORY_TITLE'|translate}}</p>
+                        <mat-icon>chevron_right</mat-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters - Ordering button --mobile -->
+            <div class="width-100"
+                fxHide.gt-xs
+                fxLayout="row"
+                fxLayoutGap="8px">
+                <button class="btn btn-dark btn-lg"
+                    fxFlex="0 0 calc(50% - 4px)"
+                    (click)="openFilters()">
+                    <mat-icon>filter_alt</mat-icon>
+                    {{'FILTERS'|translate}}
+                </button>
+                <button class="btn btn-dark btn-lg"
+                    fxFlex="0 0 calc(50% - 4px)"
+                    (click)="openOrdering()">
+                    <mat-icon>sort</mat-icon>
+                    Ordering
+                </button>
+            </div>
+
+            <!-- Items -->
+            <div class="results"
+                fxFlex="calc(100% - 332px)"
+                fxFlex.xs="0 0 100%">
+                <era-swiper-header class="mb24"
+                    [title]='"The best special offer"'
+                    moreLink='test'
+                    (clickOnPrev)='swipSpecialOffer.swiperRef.slidePrev()'
+                    (clickOnNext)='swipSpecialOffer.swiperRef.slideNext()'></era-swiper-header>
+                <swiper [slidesPerView]="'auto'"
+                    [spaceBetween]="10"
+                    [slidesPerGroup]="3"
+                    [pagination]="{clickable: true}"
+                    #swipSpecialOffer>
+                    <ng-template swiperSlide
+                        *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                        <era-product-card-horizontal></era-product-card-horizontal>
+                    </ng-template>
+                </swiper>
+
+                <era-swiper-header class="my24"
+                    [title]='"The most visited products"'
+                    moreLink='test'
+                    (clickOnPrev)='swipSpecialOffer.swiperRef.slidePrev()'
+                    (clickOnNext)='swipSpecialOffer.swiperRef.slideNext()'></era-swiper-header>
+                <swiper [slidesPerView]="'auto'"
+                    [spaceBetween]="10"
+                    [slidesPerGroup]="3"
+                    [pagination]="{clickable: true}"
+                    #swipSpecialOffer>
+                    <ng-template swiperSlide
+                        *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                        <era-product-card-vertical></era-product-card-vertical>
+                    </ng-template>
+                </swiper>
+
+                <era-swiper-header class="my24"
+                    [title]='"The most visited products"'
+                    moreLink='test'
+                    (clickOnPrev)='swipSpecialOffer.swiperRef.slidePrev()'
+                    (clickOnNext)='swipSpecialOffer.swiperRef.slideNext()'></era-swiper-header>
+                <swiper [slidesPerView]="'auto'"
+                    [spaceBetween]="10"
+                    [slidesPerGroup]="3"
+                    [pagination]="{clickable: true}"
+                    #swipSpecialOffer>
+                    <ng-template swiperSlide
+                        *ngFor="let item of [1,2,3,4,5,6,7,8,9,11,12,13]">
+                        <era-product-card-vertical></era-product-card-vertical>
+                    </ng-template>
+                </swiper>
+
+                <!-- Pagination -->
+                <ul class="meal-list">
+                    <li *ngFor="let meal of meals | paginate: { itemsPerPage: 10, currentPage: page, totalItems: 11 }">
+                        {{ meal }}
+                    </li>
+                </ul>
+                <div class="pagination bg-second br-lg px16 py8"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayout.xs="column-reverse">
+                    <p>Total: <strong class="green">10</strong></p>
+                    <div fxFlex
+                        fxHide.xs></div>
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #filters>
+    {{'FILTERS'|translate}}
+</ng-template>
+
+<ng-template #ordering>
+    Ordering
+</ng-template>

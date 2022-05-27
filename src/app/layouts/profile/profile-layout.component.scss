@@ -1,0 +1,15 @@
+.layout--profile {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mat-drawer.mat-drawer-side {
+    height: calc(100vh - 32px);
+    position: fixed;
+    top: 16px;
+    left: 16px;
+}
+
+.mat-drawer-content{
+    overflow-y: auto;
+}

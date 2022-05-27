@@ -1,0 +1,24 @@
+<div class="swiper-title"
+    fxLayout='row'
+    fxLayoutGap='24px'
+    fxLayoutAlign="space-between center">
+    <p class="fs-lg"
+        *ngIf="title">{{title}}</p>
+    <p class="fs-lg op3"
+        *ngIf="!title">No Title</p>
+    <span fxHide.xs>
+        <button mat-icon-button>
+            <mat-icon (click)="onClickPrev($event)"
+                class="text-color-main">arrow_back</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon (click)="onClickNext($event)"
+                class="text-color-main">arrow_forward</mat-icon>
+        </button>
+    </span>
+    <mat-divider fxFlex></mat-divider>
+    <button *ngIf='moreLink'
+        class="btn btn-outline btn-md"
+        [routerLink]='moreLink'
+        (click)="onClickMore($event)">{{'MORE' | translate}}</button>
+</div>

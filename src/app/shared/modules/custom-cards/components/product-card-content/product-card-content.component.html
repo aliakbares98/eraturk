@@ -1,0 +1,22 @@
+<div class="card contrary bg-white br-lg p4 relative"
+    (click)="onCardClicked($event)"
+    *ngIf="!loading; else loadingCard">
+    <img class="card_content width-100 br-lg fadeIn card_content--image"
+        src="../../../../../../assets/images/custom-cards/product-content-image.png"
+        alt="">
+    <div class="card_title p16 fs-sm fadeIn"
+    fxLayout="row nowrap"
+    fxLayoutGap="8px"
+    fxLayoutAlign="start center">
+        <span>The name of the video with two lines</span>
+        <mat-icon fxFlex="0 0 0">image</mat-icon>
+    </div>
+    <span class="card_lable fadeIn py8 px20 br-lg text-color-contrary bg-green">Image</span>
+</div>
+
+<ng-template #loadingCard>
+    <div class="card--loading bg-second p4 br-lg">
+        <div class="shimmer-dark py80 br-lg"></div>
+        <div class="shimmer-dark my16 mx16 br-lg py16"></div>
+    </div>
+</ng-template>

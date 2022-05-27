@@ -1,0 +1,13 @@
+<div class="toolbar--list p8 br-lg bg-second"
+    fxLayout='row'
+    fxLayoutAlign="start center"
+    *ngIf="addAction | able">
+    <p class="m0 ml12" *ngIf="title" fxHide.gt-xs>{{title}}</p>
+    <div fxFlex></div>
+    <button class="btn btn-add green br-lg py4 px20 fs-sm"
+        color='primary'
+        (click)="add($event)">
+        {{'ADD_NEW' | translate}}
+        <mat-icon class="green">add</mat-icon>
+    </button>
+</div>

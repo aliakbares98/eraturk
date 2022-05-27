@@ -1,0 +1,89 @@
+<div class="bg-second br-lg p32">
+  <h3>{{'PROFILE.PERSONAL_INFO_EDIT'|translate}}</h3>
+  <p class="hide-responsive fw-bold fs-sm dark-grey">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna
+    aliqua. Vestibulum sed arcu non odio euismod. Diam </p>
+  <div class="form-wrapper pt12">
+    <form [formGroup]="form"
+      fxLayout="column"
+      fxLayoutGap="10px">
+      <mat-form-field validationMessageContainer
+        appearance="fill"
+        fxLayout="column">
+        <mat-label>{{'FIRST_NAME'|translate}}</mat-label>
+        <input matInput
+          placeholder="{{'FIRST_NAME'|translate}}"
+          formControlName="firstName"
+          class="always-ltr">
+      </mat-form-field>
+      <mat-form-field validationMessageContainer
+        appearance="fill">
+        <mat-label>{{'LAST_NAME'|translate}}</mat-label>
+        <mat-icon class="edit-icon">edit</mat-icon>
+        <input matInput
+          placeholder="{{'LAST_NAME'|translate}}"
+          formControlName="lastName"
+          required
+          class="always-ltr">
+      </mat-form-field>
+
+      <mat-form-field validationMessageContainer
+        appearance="fill">
+        <mat-label>{{'PHONE_NUMBER'|translate}}</mat-label>
+        <input matInput
+          placeholder="{{'PHONE_NUMBER'|translate}}"
+          formControlName="phoneNumber"
+          required
+          class="always-ltr">
+      </mat-form-field>
+      <mat-form-field class="example-full-width"
+        appearance='fill'
+        validationMessageContainer>
+        <mat-label>{{'COUNTRY'|translate}}</mat-label>
+        <input type="text"
+          placeholder="{{'COUNTRY'|translate}}"
+          aria-label="country"
+          matInput
+          formControlName="country"
+          [matAutocomplete]="auto"
+          required>
+        <mat-autocomplete #auto="matAutocomplete"
+          [displayWith]="displayFnNationality">
+          <mat-option *ngFor="let nationality of nationlitiesOptions | async"
+            [value]="nationality">
+            <span [class]="'flag ' + 'flag-' + nationality.code"></span>&nbsp;&nbsp;{{nationality.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width"
+        validationMessageContainer
+        appearance="fill">
+        <mat-label>{{'PROVINCE'|translate}}</mat-label>
+        <input matInput
+          placeholder="{{'PROVINCE'|translate}}"
+          formControlName="province"
+          aria-label="province"
+          required
+          [matAutocomplete]="auto"
+          class="always-ltr">
+        <mat-autocomplete #auto="matAutocomplete"
+          [displayWith]="displayFnNationality">
+          <mat-option *ngForm="let nationality of nationalitiesOptions | async"
+            [value]="nationality">
+            <span [class]="'flag'+'flag-'+nationality.code"></span>&nbsp;&nbsp;{{nationality.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div class="pt20">
+        <button class="btn btn-green btn-lg"
+          [disabled]='form.invalid'
+          (click)="send()">
+          Save
+          <mat-icon class="ml32">arrow_forward</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

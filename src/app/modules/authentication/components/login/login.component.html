@@ -1,0 +1,64 @@
+<div fxLayout='column'
+    fxLayoutAlign="start center"
+    ngClass.xs="py32 px32"
+    ngClass.gt-xs="py64">
+    <img width="161px"
+        height="57px"
+        class="pointer"
+        src="../../../../../assets/images/logo/logo-text-horizontal-white.png"
+        routerLink="/">
+
+    <div class="form-wrapper mt40 bg-white br-lg contrary"
+        ngClass.xs="px32 pt24 pb32"
+        ngClass.gt-xs="px40 py40">
+        <h3 class="mb0">
+            {{'LOGIN' | translate}}
+        </h3>
+        <p class="mb16 px4">
+            Not a member yet?
+            <a routerLink='/register'
+                class="link fw-bold green">Register</a>
+        </p>
+        <form [formGroup]="form"
+            fxLayout='column'
+            fxLayoutGap="4px">
+            <mat-form-field validationMessageContainer
+                appearance="fill">
+                <mat-label>{{'USERNAME' | translate}}</mat-label>
+                <input matInput
+                    placeholder="username"
+                    formControlName='username'
+                    required
+                    class="always-ltr">
+            </mat-form-field>
+            <mat-form-field validationMessageContainer
+                appearance="fill">
+                <mat-label>{{'PASSWORD' | translate}}</mat-label>
+                <input type='password'
+                    matInput
+                    placeholder="username"
+                    formControlName='password'
+                    required
+                    class="always-ltr">
+            </mat-form-field>
+            <div fxLayout="row"
+                fxLayoutAlign="space-between center"
+                fxLayoutGap="8px"
+                class="mt16">
+                <button class="btn btn-green btn-xl"
+                    [disabled]='form.invalid || loading'
+                    (click)="login()">
+                    {{'LOGIN' | translate}}
+                    &nbsp;&nbsp;&nbsp;
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+
+            </div>
+        </form>
+        <p class="mt40"
+            routerLink="/request-otp">
+            {{'FORGOT_PASSWORD' | translate}}?
+            <span class="link fw-bold">Yes</span>
+        </p>
+    </div>
+</div>

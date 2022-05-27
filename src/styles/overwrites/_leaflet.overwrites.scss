@@ -1,0 +1,19 @@
+@import 'settings/settings.scss';
+
+.leaflet-marker-shadow {
+    display: none;
+}
+
+.leaflet-control-zoom {
+a.leaflet-control-zoom-in,
+a.leaflet-control-zoom-out {
+    color: $text-color-contrary;
+}}
+
+.leaflet-control-attribution{
+    display: none;
+}
+
+.leaflet-pane, .leaflet-control-container * {
+    z-index: 1;
+}

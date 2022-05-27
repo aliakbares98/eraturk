@@ -1,0 +1,53 @@
+@import 'settings/settings.scss';
+
+$header-height: 87px;
+
+.header-mobile {
+    width: 100%;
+    
+    .mat-toolbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: $header-height;
+        width: 100vw;
+        background-color: transparent;
+
+        .menu-icon-button {
+            width: 47px;
+            height: 47px;
+            background-color: white;
+            text-align: center;
+            line-height: 47px;
+            border-radius: 15px;
+        }
+
+        &.fixed {
+            position: fixed;
+        }
+    }
+
+    .mat-sidenav {
+        height: calc(100vh - #{$header-height});
+        top: $header-height !important;
+        background-color: $background-second !important;
+    }
+
+    .mat-sidenav-container {
+        position: fixed;
+        top: $header-height;
+    }
+
+    .mat-sidenav-container,
+    .mat-toolbar {
+        z-index: 10 !important;
+    }
+}
+
+.btn--profile {
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 24px;
+}

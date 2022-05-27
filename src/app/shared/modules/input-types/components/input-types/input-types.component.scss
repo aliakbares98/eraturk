@@ -1,0 +1,22 @@
+
+@import 'settings/settings.scss';
+
+::ng-deep {
+    .sentence-part {
+        display: inline-block;
+
+        .validation-message {
+            display: inline-block;
+        }
+    }
+}
+
+.range-inputs-wrapper{
+    input {
+        
+        display: inline-block;
+    }
+}
+.product-custom-input{
+    margin: 0;
+}

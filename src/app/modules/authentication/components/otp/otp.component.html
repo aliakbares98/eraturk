@@ -1,0 +1,64 @@
+<div ngClass.xs="p32"
+    ngClass.gt-xs="py64">
+    <div class="wrapper ma contrary bg-white br-lg"
+        ngClass.xs="p32"
+        ngClass.gt-xs="p40">
+        <form [formGroup]="form"
+            class="contrary">
+            <h3 class="fw-bold"
+                ngClass.xs="fs-2xl">
+                {{'PHONE_CODE' | translate}}
+            </h3>
+            <div fxLayout='column'>
+                <mat-form-field appearance='fill'
+                    validationMessageContainer>
+                    <mat-label>{{'PHONE_CODE' | translate}}</mat-label>
+                    <input type="text"
+                        matInput
+                        formControlName='cellphoneOtp'
+                        required
+                        class="always-ltr">
+                </mat-form-field>
+            </div>
+            <ng-container *ngIf='emailIsFilled'>
+                <h4 class="mt20">
+                    {{'EMAIL_CODE' | translate}}
+                </h4>
+                <div>
+                    <mat-icon color='warn'
+                        class="middle mr8">announcement</mat-icon>
+                    <span>
+                        {{'EMAIL_CODE_ANNOUNCEMENT' | translate}}
+                    </span>
+                </div>
+                <div fxLayout='column'
+                    class="mt12">
+                    <mat-form-field appearance='fill'
+                        validationMessageContainer>
+                        <mat-label>{{'EMAIL_CODE' | translate}}</mat-label>
+                        <input type="text"
+                            matInput
+                            formControlName='emailOtp'
+                            class="always-ltr">
+                    </mat-form-field>
+                </div>
+            </ng-container>
+            <div class="pt20">
+                <button class="btn btn-green btn-lg"
+                    [disabled]="form.invalid || loading"
+                    (click)="finishRegister()">{{'FINISH_REGISTER' | translate}}</button>
+            </div>
+        </form>
+    </div>
+    <div class="center p24">
+        <div *ngIf='(time | async) !== 0; else sendAgainButton'>{{time | async}} <span class="op6">{{'SECOND' |
+                translate}}</span></div>
+        <ng-template #sendAgainButton>
+            <div>
+                <button mat-flat-button
+                    [disabled]='loading'
+                    (click)="callCellphoneOtp()">{{'SEND_CODE_AGAIN' | translate}}</button>
+            </div>
+        </ng-template>
+    </div>
+</div>
